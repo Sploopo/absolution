@@ -1,1 +1,7 @@
-Absolution Modpack Core is a pretty cool mod, it does...this. Modify this file with a description of your mod.
+This is the core mod for the Absolution Modpack - the first Terraria modpack that actually has balancing.
+Absolution is a modpack containing four main content mods: Fargo's Soul Mod, Calamity, Thorium, and Shadows of Abaddon. All four of these mods have been engineered to play with each other as well as possible. For example, Fargo's Souls DLC exists, allowing the player to craft enchantment accessories from all three of the other mods, and stats have been adjusted so the endgame of Calamity lines up perfectly with the endgame of SoA.
+The ultimate goal of the modpack is to craft the Soul of Eternity from Fargo's Soul Mod. You'll need even more patience to do this than normally. Good luck - you're going to need it.
+
+!! Warning !!
+In order to run this modpack, you will need the 64-bit edition of tModLoader. You can get that at https://github.com/Dradonhunter11/tModLoader64bit/releases.
+The pack's requirement to combine so many large mods causes Terraria to crash, as it hits its memory limit, but tML 64 removes this limit.

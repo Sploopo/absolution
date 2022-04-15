@@ -4,5 +4,6 @@ namespace AbsolutionCore
 {
 	public class AbsolutionCore : Mod
 	{
+		
 	}
 }
