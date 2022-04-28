@@ -7,3 +7,9 @@
 ## Low priority
 - [ ] Create the various Eternity Mode modded items
 - [ ] Expand the Clicker Class into post-Moon Lord (and change existing clickers)
+
+PRIORITIES
+- High priority: Progression and balance changes, the main part of the modpack
+- Medium priority: New items (Bard/Healer/Clicker class expansions, Eternity Mode accessories, etc.)
+- Low priority: Anything involving AI (boss tweaks for Thorium/SoA, new Champions)
+- Lowest priority: Adding any more big mods to the pack (must exist as crossmod in Souls DLC before doing this at all)
