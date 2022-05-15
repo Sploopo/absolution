@@ -1,10 +1,11 @@
 ﻿using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AbsolutionCore.Items.Tiles
+namespace AbsolutionCore.Content.General.Tiles
 {
     public class YeaPainting : ModItem
     {
+        public override string Texture => "AbsolutionCore/Assets/General/Tiles/YeaPainting";
         public override void SetStaticDefaults()
         {
             Tooltip.SetDefault("'St. E. Magnum'");

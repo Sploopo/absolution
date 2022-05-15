@@ -2,9 +2,9 @@
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
-using AbsolutionCore.Items.Tiles;
+using AbsolutionCore.Content.General.Tiles;
 
-namespace AbsolutionCore
+namespace AbsolutionCore.Common.Globals
 {
     public class AbsolutionGlobalNPC : GlobalNPC
     {

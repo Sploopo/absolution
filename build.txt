@@ -1,3 +1,4 @@
 displayName = Absolution Modpack Core
 author = Absolution Dev Team
 version = 0.1
+modReferences = Fargowiltas,FargowiltasSouls,ClickerClass

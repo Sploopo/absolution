@@ -4,10 +4,11 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
-namespace AbsolutionCore.Items.Tiles
+namespace AbsolutionCore.Content.General.Tiles
 {
     public class YeaPaintingSheet : ModTile
     {
+        public override string Texture => "AbsolutionCore/Assets/General/Tiles/YeaPaintingSheet";
         public override void SetStaticDefaults()
         {
             Main.tileFrameImportant[Type] = true;

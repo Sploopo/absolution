@@ -1,0 +1,21 @@
+﻿Mods: {
+	AbsolutionCore: {
+		TownNPCMood: {
+			Guardian: {
+				Content: I feel at ease. Keep this balance intact.
+				NoHome: You can have no order have you not a place to live. Thus, I would like to crash at your place.
+				LoveSpace: There's enough space around here for me to keep this world balanced.
+				FarFromHome: There's far too much chaos this far from home. You got, like, a car or something?
+				DislikeCrowded: Too many people are here. Peace and order is destabilizing.
+				HateCrowded: What's with all these people? There's way too much chaos here. Fix it.
+				LikeBiome: "With all the times I've seen {BiomeName} infected, it's nice to see a pure one."
+				DislikeBiome: "Hmm. I get where {BiomeName} is coming from, but this seems a bit much."
+				HateBiome: "Seriously? {BiomeName} is the antithesis of order, why'd you bring me here?"
+				LikeNPC: "{NPCName} seems to do something similar to what I do. I can respect that."
+				LoveNPC: "{NPCName} has some great... uh... sense to devote herself to keeping balance. Yeah, we'll go with that."
+				DislikeNPC: "Not the biggest fan of {NPCName}, seeing as she burned down half the world with brimstone."
+				HateNPC: "... Let's just say that {NPCName} and I go way back and leave it at that."
+			}
+		}
+	}
+}
