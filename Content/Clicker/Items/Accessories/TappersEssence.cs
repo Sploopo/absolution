@@ -9,7 +9,7 @@ namespace AbsolutionCore.Content.Clicker.Items.Accessories
 {
     public class TappersEssence : ModItem
     {
-        public override string Texture => "AbsolutionCore/Assets/Clicker/Items/Accessories/TappersEssence";
+        public override string Texture => "AbsolutionCore/Placeholder";
         public override void SetStaticDefaults()
         {
             ClickerCompat.RegisterClickerItem(this);
