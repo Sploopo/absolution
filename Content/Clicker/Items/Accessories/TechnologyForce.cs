@@ -23,7 +23,7 @@ namespace AbsolutionCore.Content.Clicker.Items.Accessories
                 $"[i:{ ModContent.ItemType<RGBEnchantment>()}]Keeping your cursor within the circles will build up clicker critical strikes, clicker radius, and clicker effects\n" +
                 $"[i:{ ModContent.ItemType<OverclockEnchantment>()}]Every 100 clicks briefly grants you \"Overclock\", making every click trigger all active click effects with reduced damage\n" +
                 $"[i:{ ModContent.ItemType<OverclockEnchantment>()}]Collects enemy matter as you click on enemies\n[i:{ ModContent.ItemType<OverclockEnchantment>()}]Creates a burst of gouging paperclips when enough matter is collected\n" +
-                "'600K ought to be enough for anybody'");
+                "'All the world's progress in your hands'");
         }
 
         public override void SetDefaults()

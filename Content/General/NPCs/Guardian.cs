@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
+using System;
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.GameContent.Events;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Localization;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.Personalities;
 using static Terraria.ModLoader.ModContent;
-
+using AbsolutionCore.Common.Globals;
 
 namespace AbsolutionCore.Content.General.NPCs
 {
@@ -35,15 +35,18 @@ namespace AbsolutionCore.Content.General.NPCs
 
             NPC.Happiness
                 .SetBiomeAffection<JungleBiome>(AffectionLevel.Like)
+                .SetBiomeAffection<ForestBiome>(AffectionLevel.Like)
                 .SetBiomeAffection<HallowBiome>(AffectionLevel.Dislike)
                 .SetNPCAffection(NPCID.Dryad, AffectionLevel.Love)
-                .SetNPCAffection(NPCID.Guide, AffectionLevel.Like); // placeholder for calamitas
+                .SetNPCAffection(NPCID.Guide, AffectionLevel.Like)
+                .SetNPCAffection(NPCID.TaxCollector, AffectionLevel.Dislike) // placeholder for calamitas
+                .SetNPCAffection(ModLoader.GetMod("Fargowiltas").Find<ModNPC>("LumberJack").Type, AffectionLevel.Hate);
         }
 
         public override void SetDefaults()
         {
-            NPC.townNPC = true; // Sets NPC to be a Town NPC
-            NPC.friendly = true; // NPC Will not attack player
+            NPC.townNPC = true;
+            NPC.friendly = true;
             NPC.width = 18;
             NPC.height = 40;
             NPC.aiStyle = 7;
@@ -69,7 +72,7 @@ namespace AbsolutionCore.Content.General.NPCs
 
         public override bool CanTownNPCSpawn(int numTownNPCs, int money)
         {
-            return NPC.downedSlimeKing;
+            return AbsolutionWorld.GuardianFreed;
         }
 
         public override List<string> SetNPCNameList()
@@ -82,13 +85,42 @@ namespace AbsolutionCore.Content.General.NPCs
                 "Omname",
                 "Shard",
                 "Smirl",
-                "???",
                 "Greg"
             };
+        }
+        public override void TownNPCAttackStrength(ref int damage, ref float knockback)
+        {
+            damage = NPC.downedMoonlord ? 160 : (Main.hardMode ? 40 : 20);
+            knockback = 4f;
+        }
+        public override void TownNPCAttackCooldown(ref int cooldown, ref int randExtraCooldown)
+        {
+            cooldown = NPC.downedMoonlord ? 4 : (Main.hardMode ? 7 : 10);
+        }
+        public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
+        {
+            projType = ProjectileID.ShadowBeamFriendly;
+            attackDelay = 1;
+        }
+        public override void TownNPCAttackProjSpeed(ref float multiplier, ref float gravityCorrection, ref float randomOffset)
+        {
+            multiplier = 12f;
         }
 
         public override string GetChat()
         {
+            if(!AbsolutionWorld.GuardianGivenThanks && !Main.bloodMoon)
+            {
+                AbsolutionWorld.GuardianGivenThanks = true;
+                return "Oh, hey! Thanks for freeing me from that cramped wooden structure. Sure hope I won't end up in one of those again, haha. ... Right? " +
+                    $"Anyways, you must be the Terrarian. I'm {Main.npc[NPC.FindFirstNPC(NPCType<Guardian>())].GivenName} the Guardian, and I'm here to guide you through this incredibly convoluted world created by you mixing multiple content mods. " +
+                    "Just ask me for help if you need it.";
+            } else if(!AbsolutionWorld.GuardianGivenThanks && Main.bloodMoon)
+            {
+                AbsolutionWorld.GuardianGivenThanks = true;
+                return "yooooooooooooooooo... btw thanks for letting me out of wood jail. i didn't like it there  . you the terrarian? well i guide you through world. ask help if need!";
+            }
+
             List<string> chat = new List<string>
             {
                 "What am I guarding, you may ask? ... I'm not entirely sure.",
@@ -98,10 +130,24 @@ namespace AbsolutionCore.Content.General.NPCs
                 "The world is in balance. Don't do anything to change that, alright?",
                 "I've been in this world for many, many years... since what your kind call 2011.",
                 "Do you know where I could find a space kazoo?",
-                "A friend of mine once said, \"What's your favorite color? My favorite colors are white and black.\""
+                "A friend of mine once said, \"What's your favorite color? My favorite colors are white and black.\"",
             };
-            if (Main.hardMode) chat.Add("I'm going to warn you... I've been told I act a little weird during solar eclipses. Just watch out for that, okay?");
-
+            if(!Main.dayTime)
+            {
+                chat.Add("It's dark out. Better not look out into it, or it'll look back into you.");
+            }
+            if(!NPC.downedMoonlord)
+            {
+                chat.Add("What's that? You want to fight me? ... maybe one day.");
+            }
+            if(NPC.AnyNPCs(NPCID.Angler)) // erazor placeholder
+            {
+                chat.Add($"That {Main.npc[NPC.FindFirstNPC(NPCID.Angler)].GivenName} guy keeps saying that his daughter died 50 years ago. Well, I was there. Should I tell him that it's been a lot longer?");
+            }
+            if(Main.hardMode)
+            {
+                chat.Add("I once got in the way of the Jungle Tyrant while he was still in his prime. I'll let my left hand show you why that's a bad idea.");
+            }
             if (Main.bloodMoon)
             {
                 List<string> bloodChat = new List<string>();
@@ -120,42 +166,23 @@ namespace AbsolutionCore.Content.General.NPCs
 
         public override void SetChatButtons(ref string button, ref string button2)
         {
-            button = Language.GetTextValue("LegacyInterface.28");
-            button2 = "Help";
+            button = "Help";
         }
-
-        public List<string> helpChat = new List<string>
-        {
-            "... maybe I should take a world tour, that'll help me jog my memory.",
-            "... last time I saw it, it was going to be a Blood Moon that night."
-        };
-
-/*        public void AddHelp(string message, bool condition)
-        {
-            if (condition) helpChat.Add(message);
-        }
-        public string GetHelp()
-        {
-            if (Main.eclipse)
-            {
-                AddHelp("... maybe I should take a world tour, that'll help me jog my memory.", Main.rand.NextBool(3));
-                AddHelp("... last time I saw it, it was going to be a Blood Moon that night.", Main.LocalPlayer.ZoneJungle);
-                AddHelp("... there were a lot of sunflowers around it. Made me happy. It was a great time.", Main.LocalPlayer.ZoneBeach);
-                AddHelp($"... someone who looked like {Main.npc[NPC.FindFirstNPC(NPCID.Painter)]} was there. Could he have... taken it or something? He's gotta be dead now, though.", (Main.LocalPlayer.ZoneCorrupt || Main.LocalPlayer.ZoneCrimson) && NPC.AnyNPCs(NPCID.Painter));
-                AddHelp("... right. They had it in the capital of the Underworld. Before the... incident.", Main.LocalPlayer.Center.Y >= Main.rockLayer);
-                AddHelp("... think I had to leave because of that giant space worm thing attacking the place. Not sure how they got that under control.", Main.LocalPlayer.ZoneDesert);
-                AddHelp("... what was I wearing? Think it was some black lunar-themed shirt and a big red thing on my back, also pretty lunar.", Main.LocalPlayer.ZoneNormalSpace);
-                AddHelp("... how many people did I have with me? Five? Yeah, I think it was five.", Main.LocalPlayer.ZoneForest);
-                AddHelp("... huh, my mind's drawing a blank.", true);
-                return Main.rand.Next(helpChat);
-            }
-
-            return Main.rand.Next(helpChat);
-        }*/
 
         public override void OnChatButtonClicked(bool firstButton, ref bool shop)
         {
-            if (firstButton) shop = true; else Main.npcChatText = Main.rand.Next(helpChat);
+            List<string> helpChat = new();
+            void AddHelp(string text, bool condition)
+            {
+                if (condition) helpChat.Add(text);
+            }
+            AddHelp("The evil forces of this world await! Unfortunately, all of them are protected by a squirrel piloting a giant wooden squirrel mech. If you ever want to make progress, you'll have to take it down.", true);
+            AddHelp("... maybe I should take a world tour, that'll help me jog my memory.", Main.eclipse);
+            AddHelp("... last time I saw it, it was going to be a Blood Moon that night.", Main.eclipse && Main.LocalPlayer.ZoneSnow);
+            if (helpChat.Count <= 0) helpChat.Add("I've got nothing to help you with right now, and apparently this message is never meant to appear. You're also meant to contact the \"developers\", whoever they are. I'm also supposed to apologize for the fourth wall break."); // someone fucked up
+            if (firstButton && Main.rand.NextBool(DateTime.Now.Year)) Main.npcChatText = "This message is lore.";
+            if (firstButton && Main.bloodMoon) Main.npcChatText = "sorrrrrrrrrrrrrrrrry i can't help you    right now... come back later";
+            if (firstButton) Main.npcChatText = Main.rand.Next(helpChat);
         }
     }
 }

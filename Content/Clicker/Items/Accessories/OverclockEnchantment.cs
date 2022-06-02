@@ -11,7 +11,7 @@ namespace AbsolutionCore.Content.Clicker.Items.Accessories
 {
     public class OverclockEnchantment : ModItem
     {
-        public override string Texture => "AbsolutionCore/Placeholder";
+        public override string Texture => "AbsolutionCore/Assets/Clicker/Items/Accessories/OverclockEnchantment";
         public override void SetStaticDefaults()
         {
             ClickerCompat.RegisterClickerItem(this);

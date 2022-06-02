@@ -14,19 +14,20 @@ namespace AbsolutionCore.Common.Globals
     {
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            TooltipLine line = new TooltipLine(Mod, "ErrorTooltip", "This shouldn't be here! Please tell the devs about what you were doing before you saw this message.");
+            string tooltip;
 
             if(item.type == ModLoader.GetMod("FargowiltasSouls").Find<ModItem>("TerrariaSoul").Type)
             {
-                line = new TooltipLine(Mod, "SoTChangedTooltip", $"[i:{ModContent.ItemType<CosmiliteKazoo>()}] Provides the Clicker Class with a multitude of buffs (see Force of Technology tooltip for more information)");
+                tooltip = "Provides the Clicker Class with a multitude of buffs (see Force of Technology tooltip for more information)";
             } else if(item.type == ModLoader.GetMod("FargowiltasSouls").Find<ModItem>("UniverseSoul").Type)
             {
-                line = new TooltipLine(Mod, "SoUChangedTooltip", $"[i:{ModContent.ItemType<CosmiliteKazoo>()}] Effects of Gamer Crate, Chocolate Milk n' Cookies and Master Keychain");
+                tooltip = "Effects of Gamer Crate, Chocolate Milk n' Cookies and Master Keychain";
             } else
             {
                 return;
             }
 
+            TooltipLine line = new TooltipLine(Mod, "AbsolutionTooltip", $"[i:{ModContent.ItemType<CosmiliteKazoo>()}] " + tooltip); // DO NOT CHANGE THE NAME OF THIS TOOLTIP
             line.OverrideColor = new Color(188, 102, 255);
             tooltips.Add(line);
         }
