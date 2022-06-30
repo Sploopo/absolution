@@ -3,38 +3,18 @@ using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 using AbsolutionCore.Content.General.Tiles;
+using Terraria.GameContent.Personalities;
 
 namespace AbsolutionCore.Common.Globals
 {
     public class AbsolutionGlobalNPC : GlobalNPC
     {
-        public override bool InstancePerEntity => true;
-        Player player = Main.LocalPlayer;
-        public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
+        public override void SetStaticDefaults()
         {
-            switch(npc.type)
-            {
-                case NPCID.Painter:
-                    IItemDropRule rule = new LeadingConditionRule(new YeaPaintingDropCondition());
-                    rule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<YeaPainting>()));
-                    npcLoot.Add(rule);
-                    break;
-            }
-        }
-    }
+            int guardianType = ModContent.NPCType<Content.General.NPCs.Guardian>();
 
-    public class YeaPaintingDropCondition : IItemDropRuleCondition
-    {
-        public bool CanDrop(DropAttemptInfo info)
-        {
-            if (!info.IsInSimulation)
-            {
-                return NPC.AnyNPCs(NPCID.HallowBoss) && Main.LocalPlayer.ZoneDesert;
-            }
-            return false;
+            NPCHappiness.Get(ModLoader.GetMod("CalamityMod").Find<ModNPC>("WITCH").Type).SetNPCAffection(guardianType, AffectionLevel.Like);
+            NPCHappiness.Get(ModLoader.GetMod("Fargowiltas").Find<ModNPC>("Mutant").Type).SetNPCAffection(guardianType, AffectionLevel.Like);
         }
-
-        public bool CanShowItemDropInUI() { return true; }
-        public string GetConditionDescription() { return "Drops in the Desert while the Empress of Light is alive";  }
     }
 }

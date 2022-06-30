@@ -15,7 +15,6 @@ namespace AbsolutionCore.Content.General.NPCs
     [AutoloadHead]
     public class Guardian : ModNPC
     {
-        public override string Texture => "AbsolutionCore/Assets/General/NPCs/Guardian";
         public override void SetStaticDefaults()
         {
             Main.npcFrameCount[NPC.type] = 25;
@@ -38,8 +37,8 @@ namespace AbsolutionCore.Content.General.NPCs
                 .SetBiomeAffection<ForestBiome>(AffectionLevel.Like)
                 .SetBiomeAffection<HallowBiome>(AffectionLevel.Dislike)
                 .SetNPCAffection(NPCID.Dryad, AffectionLevel.Love)
-                .SetNPCAffection(NPCID.Guide, AffectionLevel.Like)
-                .SetNPCAffection(NPCID.TaxCollector, AffectionLevel.Dislike) // placeholder for calamitas
+                .SetNPCAffection(ModLoader.GetMod("CalamityMod").Find<ModNPC>("DILF").Type, AffectionLevel.Like)
+                .SetNPCAffection(ModLoader.GetMod("CalamityMod").Find<ModNPC>("WITCH").Type, AffectionLevel.Dislike)
                 .SetNPCAffection(ModLoader.GetMod("Fargowiltas").Find<ModNPC>("LumberJack").Type, AffectionLevel.Hate);
         }
 
@@ -80,7 +79,6 @@ namespace AbsolutionCore.Content.General.NPCs
             return new List<string>()
             {
                 "Golph",
-                "Fergus",
                 "Vian",
                 "Omname",
                 "Shard",
@@ -109,11 +107,11 @@ namespace AbsolutionCore.Content.General.NPCs
 
         public override string GetChat()
         {
-            if(!AbsolutionWorld.GuardianGivenThanks && !Main.bloodMoon)
+            if (!AbsolutionWorld.GuardianGivenThanks && !Main.bloodMoon)
             {
                 AbsolutionWorld.GuardianGivenThanks = true;
                 return "Oh, hey! Thanks for freeing me from that cramped wooden structure. Sure hope I won't end up in one of those again, haha. ... Right? " +
-                    $"Anyways, you must be the Terrarian. I'm {Main.npc[NPC.FindFirstNPC(NPCType<Guardian>())].GivenName} the Guardian, and I'm here to guide you through this incredibly convoluted world created by you mixing multiple content mods. " +
+                    $"Anyways, you must be the Terrarian. I'm {AbsolutionWorld.GuardianName}, and I'm here to guide you through this incredibly convoluted world created by you mixing multiple content mods. " +
                     "Just ask me for help if you need it.";
             } else if(!AbsolutionWorld.GuardianGivenThanks && Main.bloodMoon)
             {
@@ -144,9 +142,14 @@ namespace AbsolutionCore.Content.General.NPCs
             {
                 chat.Add($"That {Main.npc[NPC.FindFirstNPC(NPCID.Angler)].GivenName} guy keeps saying that his daughter died 50 years ago. Well, I was there. Should I tell him that it's been a lot longer?");
             }
-            if(Main.hardMode)
+            if (NPC.AnyNPCs(ModLoader.GetMod("CalamityMod").Find<ModNPC>("FAP").Type))
             {
-                chat.Add("I once got in the way of the Jungle Tyrant while he was still in his prime. I'll let my left hand show you why that's a bad idea.");
+                chat.Add($"I tried to buy a drink from {Main.npc[NPC.FindFirstNPC(ModLoader.GetMod("CalamityMod").Find<ModNPC>("FAP").Type)].GivenName}, and she asked me if I was over 21. Lady, if you multiplied that number by itself twice, you still wouldn't reach my age.");
+            }
+            if (Main.hardMode)
+            {
+                chat.Add("I once got in the way of the Jungle Tyrant while he was still in his prime. I'll let my hands show you why that's a bad idea.");
+                chat.Add("I've been told that I \"look like someone's cringe edgy OC.\" Can you tell me what that means?");
             }
             if (Main.bloodMoon)
             {

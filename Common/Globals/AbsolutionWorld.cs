@@ -14,17 +14,23 @@ namespace AbsolutionCore.Common.Globals
     {
         public static bool GuardianFreed = false;
         public static bool GuardianGivenThanks = false;
+        public static bool DownedGuardian = false;
+        public static string GuardianName = "ERROR";
 
         public override void SaveWorldData(TagCompound tag)
         {
             tag.Add("guardianFreed", GuardianFreed);
             tag.Add("guardianGivenThanks", GuardianGivenThanks);
+            tag.Add("downedGuardian", DownedGuardian);
+            tag.Add("guardianName", GuardianName);
         }
 
         public override void LoadWorldData(TagCompound tag)
         {
             GuardianFreed = tag.Get<bool>("guardianFreed");
             GuardianGivenThanks = tag.Get<bool>("guardianGivenThanks");
+            DownedGuardian = tag.Get<bool>("downedGuardian");
+            GuardianName = tag.Get<string>("guardianName");
         }
     }
 }

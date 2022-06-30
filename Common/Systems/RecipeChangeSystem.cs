@@ -1,6 +1,7 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using AbsolutionCore.Content;
 using AbsolutionCore.Content.Clicker;
 using Microsoft.Xna.Framework;
 using System;
@@ -43,6 +44,31 @@ namespace AbsolutionCore.Common.Systems
                     recipe.AddIngredient(Mod.Find<ModItem>("IdlistSoul").Type);
                 }
             }
+        }
+    }
+    public class ModifiedRecipeGlobalItem : GlobalItem
+    {
+        public override bool InstancePerEntity => true;
+        public override GlobalItem Clone(Item item, Item itemClone)
+        {
+            return base.Clone(item, itemClone);
+        }
+        List<int> ModifiedItems = new List<int>
+        {
+            ItemID.PDA,
+            ItemID.CellPhone,
+            ModLoader.GetMod("FargowiltasSouls").Find<ModItem>("UniverseSoul").Type,
+            ModLoader.GetMod("FargowiltasSouls").Find<ModItem>("TerrariaSoul").Type,
+        };
+        public override bool AppliesToEntity(Item entity, bool lateInstantiation)
+        {
+            return ModifiedItems.Contains(entity.type);
+        }
+        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
+        {
+            TooltipLine line = new TooltipLine(Mod, "ModifiedRecipe", $"[i:{ModContent.ItemType<CosmiliteKazoo>()}] Recipe modified by Absolution");
+            line.OverrideColor = new Color(188, 102, 255);
+            tooltips.Add(line);
         }
     }
 }

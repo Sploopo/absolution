@@ -8,7 +8,6 @@ namespace AbsolutionCore.Content.General.Tiles
 {
     public class YeaPaintingSheet : ModTile
     {
-        public override string Texture => "AbsolutionCore/Assets/General/Tiles/YeaPaintingSheet";
         public override void SetStaticDefaults()
         {
             Main.tileFrameImportant[Type] = true;

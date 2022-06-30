@@ -10,7 +10,6 @@ namespace AbsolutionCore.Content.Clicker.Items.Accessories
 {
     public class MiceEnchantment : ModItem
     {
-        public override string Texture => "AbsolutionCore/Assets/Clicker/Items/Accessories/MiceEnchantment";
         public override void SetStaticDefaults()
         {
             ClickerCompat.RegisterClickerItem(this);

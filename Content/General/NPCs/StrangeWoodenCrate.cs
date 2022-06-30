@@ -13,7 +13,6 @@ namespace AbsolutionCore.Content.General.NPCs
 {
     public class StrangeWoodenCrate : ModNPC
     {
-        public override string Texture => "AbsolutionCore/Assets/General/NPCs/StrangeWoodenCrate";
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Strange Wooden Crate");
@@ -43,10 +42,12 @@ namespace AbsolutionCore.Content.General.NPCs
             npcLoot.Add(ItemDropRule.DropNothing());
         }
 
-        public override void OnKill()
+        public override bool CheckDead()
         {
             AbsolutionWorld.GuardianFreed = true;
-            NPC.NewNPC(NPC.GetSource_FromThis(), (int)NPC.Center.X, (int)NPC.Center.Y, ModContent.NPCType<Guardian>());
+            int n = NPC.NewNPC(NPC.GetSource_FromThis(), (int)NPC.Center.X, (int)NPC.Center.Y, ModContent.NPCType<Guardian>());
+            AbsolutionWorld.GuardianName = Main.npc[n].GivenName;
+            return true;
         }
     }
 }

@@ -3,19 +3,19 @@
 		TownNPCMood: {
 			Guardian: {
 				Content: I feel at ease. Keep this balance intact.
-				NoHome: You can have no order have you not a place to live. Thus, I would like to crash at your place.
+				NoHome: You can have no order have you not a place to live. So, can I crash at your place?
 				LoveSpace: There's enough space around here for me to keep this world balanced.
-				FarFromHome: There's far too much chaos this far from home. You got, like, a car or something?
+				FarFromHome: There's way too much chaos this far from home. You got, like, a car or something?
 				DislikeCrowded: Too many people are here. Peace and order is destabilizing.
 				HateCrowded: What's with all these people? There's way too much chaos here. Fix it.
 				LikeBiome: "There are not many biomes more pure than {BiomeName}. Big fan of this place."
 				DislikeBiome: "Hmm. I get where {BiomeName} is coming from, but this seems a bit much."
 				HateBiome: "Seriously? {BiomeName} is the antithesis of order, why'd you bring me here?"
-				LikeNPC: "{NPCName} seems to do something similar to what I do. I can respect that."
+				LikeNPC: "I knew {NPCName} a long, long time ago, and that's saying something coming from me. Great to have him back."
 				LikeNPC_Princess: "I don't exactly have the best track record with royalty, but {NPCName} seems fine."
 				LoveNPC: "{NPCName} has some great... uh... sense to devote herself to keeping balance. Yeah, we'll go with that."
-				DislikeNPC: "It's hard to blame {NPCName} for what she did to that angry mob, but what happened after was pointless."
-				HateNPC: "... Let's just say that I've seen what {NPCName} is capable of and leave it at that."
+				DislikeNPC: "I get that it's all behind us, but everything that {NPCName} has done makes our people look bad."
+				HateNPC: "... Let's just say that I've seen what {NPCName} is capable of and leave it there."
 			}
 		}
 	}
