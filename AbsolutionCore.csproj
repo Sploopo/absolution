@@ -11,8 +11,14 @@
     <PackageReference Include="tModLoader.CodeAssist" Version="0.1.*" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="CalamityMod">
+      <HintPath>..\..\..\..\..\..\AppData\Roaming\TML-Patcher\Extracted\CalamityMod\CalamityMod.dll</HintPath>
+    </Reference>
     <Reference Include="ClickerClass">
       <HintPath>..\..\ModReader\ClickerClass\ClickerClass.dll</HintPath>
+    </Reference>
+    <Reference Include="FargowiltasSouls">
+      <HintPath>D:\sploo\TML.Patcher.Release.0.2.1.0\Extracted\FargowiltasSouls.tmod\FargowiltasSouls.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

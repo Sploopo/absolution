@@ -16,7 +16,7 @@ namespace AbsolutionCore.Content.Clicker.Items.Accessories
             ClickerCompat.RegisterClickerItem(this);
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
             DisplayName.SetDefault("Idlist's Soul");
-            Tooltip.SetDefault("'I think it's safe to say you've got it made'\n30% increased clicker damage\n15% increased clicker crit chance\n35% increased clicker radius\nEffects of Gamer Crate, Chocolate Milk n' Cookies and Master Keychain");
+            Tooltip.SetDefault("30% increased clicker damage\n15% increased clicker crit chance\n35% increased clicker radius\nEffects of Gamer Crate, Chocolate Milk n' Cookies and Master Keychain\n'I think it's safe to say you've got it made'");
         }
 
         public override void SetDefaults()

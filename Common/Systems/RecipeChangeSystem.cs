@@ -29,20 +29,19 @@ namespace AbsolutionCore.Common.Systems
             {
                 Recipe recipe = Main.recipe[i];
 
-                if(recipe.TryGetResult(ItemID.PDA, out Item pda))
+                if (recipe.TryGetResult(ItemID.PDA, out Item g)) recipe.AddIngredient(ClickerCompat.ClickerClass.Find<ModItem>("ButtonMasher").Type);
+                if (recipe.TryGetResult(ModLoader.GetMod("FargowiltasSouls").Find<ModItem>("TerrariaSoul"), out g)) recipe.AddIngredient(Mod.Find<ModItem>("TechnologyForce").Type);
+                if (recipe.TryGetResult(ModLoader.GetMod("FargowiltasSouls").Find<ModItem>("UniverseSoul"), out g)) recipe.AddIngredient(Mod.Find<ModItem>("IdlistSoul").Type);
+                if (recipe.TryGetResult(ModLoader.GetMod("FargowiltasSouls").Find<ModItem>("SigilOfChampions"), out g)) recipe.DisableRecipe();
+                if (recipe.TryGetResult(ModLoader.GetMod("FargowiltasSouls").Find<ModItem>("DevisCurse"), out g)) recipe.AddIngredient(ModLoader.GetMod("CalamityMod").Find<ModItem>("PurifiedGel").Type, 5);
+                if (recipe.TryGetResult(ModLoader.GetMod("CalamityMod").Find<ModItem>("DecapoditaSprout"), out g))
                 {
-                    recipe.AddIngredient(ClickerCompat.ClickerClass.Find<ModItem>("ButtonMasher").Type);
+                    recipe.RemoveTile(TileID.DemonAltar);
+                    recipe.AddTile(TileID.Solidifier);
                 }
-
-                if (recipe.TryGetResult(ModLoader.GetMod("FargowiltasSouls").Find<ModItem>("TerrariaSoul"), out Item terrariaSoul))
-                {
-                    recipe.AddIngredient(Mod.Find<ModItem>("TechnologyForce").Type);
-                }
-
-                if (recipe.TryGetResult(ModLoader.GetMod("FargowiltasSouls").Find<ModItem>("UniverseSoul"), out Item universeSoul))
-                {
-                    recipe.AddIngredient(Mod.Find<ModItem>("IdlistSoul").Type);
-                }
+                if (recipe.TryGetResult(ModLoader.GetMod("CalamityMod").Find<ModItem>("OverloadedSludge"), out g)) recipe.AddIngredient(ItemID.Bone, 10);
+                if (recipe.TryGetResult(ModLoader.GetMod("CalamityMod").Find<ModItem>("CosmicWorm"), out g)  && recipe.TryGetIngredient(ItemID.IronBar, out g)) recipe.DisableRecipe();
+                if (recipe.TryGetResult(ModLoader.GetMod("CalamityMod").Find<ModItem>("CosmicWorm"), out g) && recipe.TryGetIngredient(ModLoader.GetMod("CalamityMod").Find<ModItem>("TwistingNether").Type, out g)) recipe.AddIngredient(ModLoader.GetMod("FargowiltasSouls").Find<ModItem>("Eridanium").Type, 5);
             }
         }
     }
@@ -56,9 +55,13 @@ namespace AbsolutionCore.Common.Systems
         List<int> ModifiedItems = new List<int>
         {
             ItemID.PDA,
-            ItemID.CellPhone,
             ModLoader.GetMod("FargowiltasSouls").Find<ModItem>("UniverseSoul").Type,
             ModLoader.GetMod("FargowiltasSouls").Find<ModItem>("TerrariaSoul").Type,
+            ModLoader.GetMod("FargowiltasSouls").Find<ModItem>("SigilOfChampions").Type,
+            ModLoader.GetMod("FargowiltasSouls").Find<ModItem>("DevisCurse").Type,
+            ModLoader.GetMod("CalamityMod").Find<ModItem>("DecapoditaSprout").Type,
+            ModLoader.GetMod("CalamityMod").Find<ModItem>("OverloadedSludge").Type,
+            ModLoader.GetMod("CalamityMod").Find<ModItem>("CosmicWorm").Type,
         };
         public override bool AppliesToEntity(Item entity, bool lateInstantiation)
         {
@@ -66,8 +69,10 @@ namespace AbsolutionCore.Common.Systems
         }
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
+            Color[] colors = { new Color(128, 0, 255), new Color(255, 0, 255) };
+            int index = (int)(Main.GameUpdateCount / 60) % 2;
             TooltipLine line = new TooltipLine(Mod, "ModifiedRecipe", $"[i:{ModContent.ItemType<CosmiliteKazoo>()}] Recipe modified by Absolution");
-            line.OverrideColor = new Color(188, 102, 255);
+            line.OverrideColor = Color.Lerp(colors[index], colors[(index + 1)%2], (Main.GameUpdateCount % 60) / 60f);
             tooltips.Add(line);
         }
     }

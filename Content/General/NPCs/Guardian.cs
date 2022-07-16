@@ -33,7 +33,6 @@ namespace AbsolutionCore.Content.General.NPCs
             NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 
             NPC.Happiness
-                .SetBiomeAffection<JungleBiome>(AffectionLevel.Like)
                 .SetBiomeAffection<ForestBiome>(AffectionLevel.Like)
                 .SetBiomeAffection<HallowBiome>(AffectionLevel.Dislike)
                 .SetNPCAffection(NPCID.Dryad, AffectionLevel.Love)
@@ -65,7 +64,7 @@ namespace AbsolutionCore.Content.General.NPCs
             bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
             {
                 BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
-                new FlavorTextBestiaryInfoElement("No one knows where exactly the Guardian came from, nor do they know what his commitment to balance entails. One thing's for certain: he's sure to help you navigate this world of content.")
+                new FlavorTextBestiaryInfoElement("No one knows exactly who the Guardian is, nor do they truly know how long he's been in this world. One thing's for certain: he's sure to help you navigate this world of content.")
             });
         }
 
@@ -124,7 +123,7 @@ namespace AbsolutionCore.Content.General.NPCs
                 "What am I guarding, you may ask? ... I'm not entirely sure.",
                 "You ever been in a Turkish prison?",
                 "I remember a time when this world was unified. Granted, it was under a brutal dictator, so not the best of times.",
-                "A jungle tyrant, a nightmare lord, and a bearer of the end of reality. It's probably bad that all of them are so powerful.",
+                "A jungle tyrant, a nightmare lord, and a harbinger of the end of reality. It's probably bad that all of them are so powerful.",
                 "The world is in balance. Don't do anything to change that, alright?",
                 "I've been in this world for many, many years... since what your kind call 2011.",
                 "Do you know where I could find a space kazoo?",
@@ -138,13 +137,9 @@ namespace AbsolutionCore.Content.General.NPCs
             {
                 chat.Add("What's that? You want to fight me? ... maybe one day.");
             }
-            if(NPC.AnyNPCs(NPCID.Angler)) // erazor placeholder
-            {
-                chat.Add($"That {Main.npc[NPC.FindFirstNPC(NPCID.Angler)].GivenName} guy keeps saying that his daughter died 50 years ago. Well, I was there. Should I tell him that it's been a lot longer?");
-            }
             if (NPC.AnyNPCs(ModLoader.GetMod("CalamityMod").Find<ModNPC>("FAP").Type))
             {
-                chat.Add($"I tried to buy a drink from {Main.npc[NPC.FindFirstNPC(ModLoader.GetMod("CalamityMod").Find<ModNPC>("FAP").Type)].GivenName}, and she asked me if I was over 21. Lady, if you multiplied that number by itself twice, you still wouldn't reach my age.");
+                chat.Add($"I tried to buy a drink from {Main.npc[NPC.FindFirstNPC(ModLoader.GetMod("CalamityMod").Find<ModNPC>("FAP").Type)].GivenName}, and she asked me if I was over 21. Lady, if you multiplied that number by itself twice, you still wouldn't be close to my age.");
             }
             if (Main.hardMode)
             {
@@ -174,6 +169,7 @@ namespace AbsolutionCore.Content.General.NPCs
 
         public override void OnChatButtonClicked(bool firstButton, ref bool shop)
         {
+            AbsolutionWorld.GuardianName = NPC.GivenName;
             List<string> helpChat = new();
             void AddHelp(string text, bool condition)
             {

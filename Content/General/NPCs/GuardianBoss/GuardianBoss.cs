@@ -55,6 +55,15 @@ namespace AbsolutionCore.Content.General.NPCs.GuardianBoss
             });
         }
 
+        public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+        {
+            bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
+            {
+                BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
+                new FlavorTextBestiaryInfoElement("A master of balance, one of the oldest beings in the world, and your final test before you take on Terraria's truly powerful enemies.")
+            });
+        }
+
         public override void SetDefaults()
         {
             NPC.width = 120;
