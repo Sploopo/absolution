@@ -20,7 +20,7 @@ namespace AbsolutionCore.Content.General.NPCs.GuardianBoss
     public class GuardianBoss : ModNPC
     {
         public int timer;
-        public int attackType = -3;
+        public int attackType = -1;
         public int attackTier;
 
         public Vector2 targetPos;
@@ -142,7 +142,13 @@ namespace AbsolutionCore.Content.General.NPCs.GuardianBoss
                         NPC.checkDead();
                     }
                     break;
+                case -1: // following player to arena (stolen from dayrise (remember dayrise))
+                    Music = MusicLoader.GetMusicSlot(Mod, "Assets/Music/silence");
+                    NPC.velocity = MoveTo(new Vector2(player.Center.X + 350f, player.Center.Y), 1.15f);
+                    if (NPC.life < NPC.lifeMax) attackType = -3;
+                    break;
                 default:
+                    Music = MusicLoader.GetMusicSlot(Mod, "Assets/Music/depot");
                     NPC.velocity = MoveTo(new Vector2(player.Center.X - 350f, player.Center.Y), 1.5f);
                     if((NPC.Center.X - player.Center.X > -400f && NPC.Center.X - player.Center.X < -300f && NPC.Center.Y - player.Center.Y > -25f && NPC.Center.Y - player.Center.Y < 25f) || timer++ > 300)
                     {

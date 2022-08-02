@@ -172,6 +172,7 @@ namespace AbsolutionCore.Content.General.NPCs
         public override void SetChatButtons(ref string button, ref string button2)
         {
             button = "Help";
+            if(CalamityMod.DownedBossSystem.downedYharon) button2 = "Fight";
         }
 
         public override void OnChatButtonClicked(bool firstButton, ref bool shop)
@@ -189,6 +190,8 @@ namespace AbsolutionCore.Content.General.NPCs
             if (firstButton && Main.rand.NextBool(DateTime.Now.Year)) Main.npcChatText = "This message is lore.";
             if (firstButton && Main.bloodMoon) Main.npcChatText = "sorrrrrrrrrrrrrrrrry i can't help you    right now... come back later";
             if (firstButton) Main.npcChatText = Main.rand.Next(helpChat);
+
+            Main.npcChatText = "fight";
         }
     }
 }
