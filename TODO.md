@@ -1,15 +1,18 @@
 # The Absolution Modpack To-Do List
-## High priority
-- [ ] Prevent Eridanus from being summoned before all other champions have passed away
-- [ ] Change the effect of the Eridanus armor to require double-tapping DOWN instead of the time-based bullshittery
-## Medium priority
-- [x] Add the Yea Painting item with a placeholder set of conditions for dropping from the Painter
-## Low priority
-- [ ] Create the various Eternity Mode modded items
-- [ ] Expand the Clicker Class into post-Moon Lord (and change existing clickers)
+## Fargo changes
+- Change the effect of the Eridanus armor to require double-tapping DOWN instead of the time-based bullshittery
+- Move all Soul of the Universe/Soul of Dimensions components to post-Devourer of Gods, and the Soul of the Universe/Soul of Dimensions themselves to post-Guardian
+- Remove Celestial Shell from Berserker's Soul
+## Calamity changes
+- Cause the Abyss to kill you without defeating certain bosses (layer 1: Piglin Brute (ignore for now), layer 2: Plantera, layer 3: Old Duke, layer 4: Abominationn)
+- Prevent Anahita from spawning until Calamitas has been defeated
+- Destroy Profaned Guardians dropping Profaned Core
+- Outlaw Titan Hearts being usable at Astral Beacon, change Starcore to require Infected Armor Plating
+- Ban Lunar Event enemies from dropping Meld Blobs, make Astrum Deus drop them instead
+- Add Abominable Energy to Dragon Egg recipe
+- Replace the Terminus in the Abyss with the Inactive Terminus (must be activated with Eternal Energy)
+- Add Cosmic Plushie to a shop post-DoG for 10 platinum
+## Other changes
+- Create the Guardian Boss
 
-PRIORITIES
-- High priority: Progression and balance changes, the main part of the modpack
-- Medium priority: New items (Bard/Healer/Clicker class expansions, Eternity Mode accessories, etc.)
-- Low priority: Anything involving AI (boss tweaks for Thorium/SoA, new Champions)
-- Lowest priority: Adding any more big mods to the pack (must exist as crossmod in Souls DLC before doing this at all)
+If you finish a task remove it from the list
