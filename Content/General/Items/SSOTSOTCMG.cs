@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 using Terraria.Localization;
 using Terraria.Audio;
 using CalamityMod.World;
-using AbsolutionCore.Common.Globals;
+using AbsolutionCore.Common.Systems;
 using System.Collections.Generic;
 
 namespace AbsolutionCore.Content.General.Items
@@ -65,7 +65,7 @@ namespace AbsolutionCore.Content.General.Items
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            Color[] specialColors = { new Color(211, 53, 53), new Color(130, 57, 125) };
+            Color[] specialColors = { new Color(211, 53, 53), new Color(167, 38, 229) };
 
             foreach (TooltipLine line2 in tooltips)
             {

@@ -12,7 +12,7 @@ using Terraria.Graphics.Effects;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using AbsolutionCore.Common.Globals;
+using AbsolutionCore.Common.Systems;
 
 namespace AbsolutionCore.Content.General.NPCs.GuardianBoss
 {
@@ -23,7 +23,6 @@ namespace AbsolutionCore.Content.General.NPCs.GuardianBoss
         public int attackType = -3;
         public int attackTier;
 
-        public bool reachedTopOfThing;
         public Vector2 targetPos;
 
         public override void SetStaticDefaults()
@@ -116,11 +115,6 @@ namespace AbsolutionCore.Content.General.NPCs.GuardianBoss
                 case -2: // death animation
                     NPC.velocity *= 0.75f;
                     NPC.dontTakeDamage = true;
-                    if(timer % 6 == 0)
-                    {
-                        SoundEngine.PlaySound(SoundID.Item43);
-                        Projectile.NewProjectile(NPC.GetSource_FromAI(), new Vector2(NPC.Center.X, NPC.Center.Y + 25f), new Vector2(Main.rand.Next(-8, 8), Main.rand.Next(-8, 8)), ProjectileID.ShadowBeamFriendly, 0, 0f);
-                    }
                     if(++timer > 180)
                     {
                         if(Main.netMode != NetmodeID.MultiplayerClient)
@@ -148,45 +142,7 @@ namespace AbsolutionCore.Content.General.NPCs.GuardianBoss
                         NPC.checkDead();
                     }
                     break;
-                case 0: // holy spears
-                    Main.NewText("holy spear walls", 128, 0, 255);
-                    NPC.velocity = timer++ <= 80 ? MoveTo(new Vector2(player.Center.X - 350f, player.Center.Y), 1.5f) : MoveTo(new Vector2(player.Center.X + 350f, player.Center.Y), 1.5f);
-                    if(timer == 80)
-                    {
-                        for (int i = 0; i < 25; i++)
-                        {
-                            int d = Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Shadowflame, 0f, 0f, 0, default(Color), 1f);
-                            Main.dust[d].noGravity = true;
-                            Main.dust[d].velocity *= 4f;
-                        }
-                        NPC.position = new Vector2((int)player.Center.X + 350f, (int)NPC.Center.Y);
-                        SoundEngine.PlaySound(SoundID.Item130);
-                        for (int i = 0; i < 25; i++)
-                        {
-                            int d = Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Shadowflame, 0f, 0f, 0, default(Color), 1f);
-                            Main.dust[d].noGravity = true;
-                            Main.dust[d].velocity *= 4f;
-                        }
-                    }
-                    if (timer >= 160) attackType = -3; // get new attack
-                    break;
-                case 1: // sword rifts
-                    Main.NewText("sword rifts", 128, 0, 255);
-                    SoundEngine.PlaySound(SoundID.Roar);
-                    attackType = -3;
-                    break;
-                case 2: // pumpkin rings
-                    Main.NewText("pumpkin rings", 128, 0, 255);
-                    if (((NPC.Center.Y - player.Center.Y > -425f && NPC.Center.Y - player.Center.Y < -375f) || timer > 120) && !reachedTopOfThing)
-                    {
-                        targetPos = new Vector2(NPC.Center.X + 700f, NPC.Center.Y);
-                        reachedTopOfThing = true;
-                    }
-                    NPC.velocity = reachedTopOfThing ? new Vector2(8f, 0f) : MoveTo(new Vector2(player.Center.X - 350f, player.Center.Y - 400f), 1.5f);
-                    if (timer++ > 175 && reachedTopOfThing) attackType = -3;
-                    break;
                 default:
-                    reachedTopOfThing = false;
                     NPC.velocity = MoveTo(new Vector2(player.Center.X - 350f, player.Center.Y), 1.5f);
                     if((NPC.Center.X - player.Center.X > -400f && NPC.Center.X - player.Center.X < -300f && NPC.Center.Y - player.Center.Y > -25f && NPC.Center.Y - player.Center.Y < 25f) || timer++ > 300)
                     {

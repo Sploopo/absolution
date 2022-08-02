@@ -8,7 +8,7 @@ using Terraria.Localization;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.Personalities;
 using static Terraria.ModLoader.ModContent;
-using AbsolutionCore.Common.Globals;
+using AbsolutionCore.Common.Systems;
 
 namespace AbsolutionCore.Content.General.NPCs
 {
@@ -80,7 +80,7 @@ namespace AbsolutionCore.Content.General.NPCs
                 "Golph",
                 "Vian",
                 "Omname",
-                "Shard",
+                "Walt",
                 "Smirl",
                 "Greg"
             };
@@ -152,8 +152,10 @@ namespace AbsolutionCore.Content.General.NPCs
                 bloodChat.Add("yo can i get uuuuuuuuhhhhh");
                 bloodChat.Add("DID YOU KNOW?");
                 bloodChat.Add("how to undrunk yourself");
+                bloodChat.Add("Acest mesaj este în limba greșită lol");
                 bloodChat.Add("british people be like:\n\nbritish");
                 bloodChat.Add("ga");
+                bloodChat.Add("it's not that deep!");
                 bloodChat.Add("hi sorry i can get like this sometohimse on moon moons. moon moon moon moon moon moon mon mn m");
                 bloodChat.Add($"So I had recently bought this game on Steam called \"Terraria\". I had heard the game was kind of like a 2d version of minecraft. I spawned into a world and there was this guy named {Main.npc[NPC.FindFirstNPC(NPCType<Guardian>())].GivenName} who had a bow and he killed slimes and stuff. I talked to him and seemed like a pretty cool guy.");
                 return Main.rand.Next(bloodChat);

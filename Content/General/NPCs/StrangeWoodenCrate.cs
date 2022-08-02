@@ -7,7 +7,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.ItemDropRules;
-using AbsolutionCore.Common.Globals;
+using AbsolutionCore.Common.Systems;
 
 namespace AbsolutionCore.Content.General.NPCs
 {
@@ -33,7 +33,7 @@ namespace AbsolutionCore.Content.General.NPCs
         
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            if (!AbsolutionWorld.GuardianFreed && !NPC.AnyNPCs(ModContent.NPCType<StrangeWoodenCrate>())) return 0.15f;
+            if (!AbsolutionWorld.GuardianFreed && !NPC.AnyNPCs(ModContent.NPCType<StrangeWoodenCrate>())) return 0.075f;
             return 0f;
         }
 

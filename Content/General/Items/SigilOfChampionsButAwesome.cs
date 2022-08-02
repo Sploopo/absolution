@@ -6,7 +6,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Localization;
-using AbsolutionCore.Common.Globals;
+using AbsolutionCore.Common.Systems;
 using Terraria.Audio;
 using FargowiltasSouls.NPCs;
 using CalamityMod;

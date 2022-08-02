@@ -2,7 +2,6 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 using AbsolutionCore.Content;
-using AbsolutionCore.Content.Clicker;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -11,42 +10,35 @@ namespace AbsolutionCore.Common.Systems
 {
     public class RecipeChangeSystem : ModSystem
     {
-        public override void AddRecipeGroups()
-        {
-            // any cobalt clicker
-            RecipeGroup.RegisterGroup("AnyCobaltClicker", new RecipeGroup(() => "Any Cobalt Clicker", new int[2] { ClickerCompat.ClickerClass.Find<ModItem>("CobaltClicker").Type,
-            ClickerCompat.ClickerClass.Find<ModItem>("PalladiumClicker").Type}));
-            // any mythril clicker
-            RecipeGroup.RegisterGroup("AnyMythrilClicker", new RecipeGroup(() => "Any Mythril Clicker", new int[2] { ClickerCompat.ClickerClass.Find<ModItem>("MythrilClicker").Type,
-            ClickerCompat.ClickerClass.Find<ModItem>("OrichalcumClicker").Type}));
-            // any adamantite clicker
-            RecipeGroup.RegisterGroup("AnyAdamantiteClicker", new RecipeGroup(() => "Any Adamantite Clicker", new int[2] { ClickerCompat.ClickerClass.Find<ModItem>("AdamantiteClicker").Type,
-            ClickerCompat.ClickerClass.Find<ModItem>("TitaniumClicker").Type}));
-        }
+        Mod souls = ModLoader.GetMod("FargowiltasSouls");
+        Mod calamity = ModLoader.GetMod("CalamityMod");
         public override void PostAddRecipes()
         {
             for(int i = 0; i < Recipe.numRecipes; i++)
             {
                 Recipe recipe = Main.recipe[i];
 
-                if (recipe.TryGetResult(ItemID.PDA, out Item g)) recipe.AddIngredient(ClickerCompat.ClickerClass.Find<ModItem>("ButtonMasher").Type);
-                if (recipe.TryGetResult(ModLoader.GetMod("FargowiltasSouls").Find<ModItem>("TerrariaSoul"), out g)) recipe.AddIngredient(Mod.Find<ModItem>("TechnologyForce").Type);
-                if (recipe.TryGetResult(ModLoader.GetMod("FargowiltasSouls").Find<ModItem>("UniverseSoul"), out g)) recipe.AddIngredient(Mod.Find<ModItem>("IdlistSoul").Type);
-                if (recipe.TryGetResult(ModLoader.GetMod("FargowiltasSouls").Find<ModItem>("SigilOfChampions"), out g)) recipe.DisableRecipe();
-                if (recipe.TryGetResult(ModLoader.GetMod("FargowiltasSouls").Find<ModItem>("DevisCurse"), out g)) recipe.AddIngredient(ModLoader.GetMod("CalamityMod").Find<ModItem>("PurifiedGel").Type, 5);
-                if (recipe.TryGetResult(ModLoader.GetMod("CalamityMod").Find<ModItem>("DecapoditaSprout"), out g))
+                if (recipe.TryGetIngredient(ItemID.GuideVoodooDoll, out Item g)) recipe.DisableRecipe();
+                if (recipe.TryGetResult(souls.Find<ModItem>("TrawlerSoul"), out g)) recipe.AddIngredient(calamity.Find<ModItem>("SupremeBaitTackleBoxFishingStation").Type);
+                if (recipe.TryGetResult(souls.Find<ModItem>("TerrariaSoul"), out g)) recipe.AddIngredient(Mod.Find<ModItem>("TechnologyForce").Type);
+                if (recipe.TryGetResult(souls.Find<ModItem>("UniverseSoul"), out g)) recipe.AddIngredient(Mod.Find<ModItem>("IdlistSoul").Type);
+                if (recipe.TryGetResult(souls.Find<ModItem>("SigilOfChampions"), out g)) recipe.DisableRecipe();
+                if (recipe.TryGetResult(souls.Find<ModItem>("DevisCurse"), out g)) recipe.AddIngredient(calamity.Find<ModItem>("PurifiedGel").Type, 5);
+                if (recipe.TryGetResult(calamity.Find<ModItem>("DecapoditaSprout"), out g))
                 {
                     recipe.RemoveTile(TileID.DemonAltar);
                     recipe.AddTile(TileID.Solidifier);
                 }
-                if (recipe.TryGetResult(ModLoader.GetMod("CalamityMod").Find<ModItem>("OverloadedSludge"), out g)) recipe.AddIngredient(ItemID.Bone, 10);
-                if (recipe.TryGetResult(ModLoader.GetMod("CalamityMod").Find<ModItem>("CosmicWorm"), out g)  && recipe.TryGetIngredient(ItemID.IronBar, out g)) recipe.DisableRecipe();
-                if (recipe.TryGetResult(ModLoader.GetMod("CalamityMod").Find<ModItem>("CosmicWorm"), out g) && recipe.TryGetIngredient(ModLoader.GetMod("CalamityMod").Find<ModItem>("TwistingNether").Type, out g)) recipe.AddIngredient(ModLoader.GetMod("FargowiltasSouls").Find<ModItem>("Eridanium").Type, 5);
+                if (recipe.TryGetResult(calamity.Find<ModItem>("OverloadedSludge"), out g)) recipe.AddIngredient(ItemID.Bone, 10);
+                if (recipe.TryGetResult(calamity.Find<ModItem>("CosmicWorm"), out g)  && recipe.TryGetIngredient(ItemID.IronBar, out g)) recipe.DisableRecipe();
+                if (recipe.TryGetResult(calamity.Find<ModItem>("CosmicWorm"), out g) && recipe.TryGetIngredient(calamity.Find<ModItem>("TwistingNether").Type, out g)) recipe.AddIngredient(souls.Find<ModItem>("Eridanium").Type, 5);
             }
         }
     }
     public class ModifiedRecipeGlobalItem : GlobalItem
     {
+        static Mod souls = ModLoader.GetMod("FargowiltasSouls");
+        static Mod calamity = ModLoader.GetMod("CalamityMod");
         public override bool InstancePerEntity => true;
         public override GlobalItem Clone(Item item, Item itemClone)
         {
@@ -54,14 +46,13 @@ namespace AbsolutionCore.Common.Systems
         }
         List<int> ModifiedItems = new List<int>
         {
-            ItemID.PDA,
-            ModLoader.GetMod("FargowiltasSouls").Find<ModItem>("UniverseSoul").Type,
-            ModLoader.GetMod("FargowiltasSouls").Find<ModItem>("TerrariaSoul").Type,
-            ModLoader.GetMod("FargowiltasSouls").Find<ModItem>("SigilOfChampions").Type,
-            ModLoader.GetMod("FargowiltasSouls").Find<ModItem>("DevisCurse").Type,
-            ModLoader.GetMod("CalamityMod").Find<ModItem>("DecapoditaSprout").Type,
-            ModLoader.GetMod("CalamityMod").Find<ModItem>("OverloadedSludge").Type,
-            ModLoader.GetMod("CalamityMod").Find<ModItem>("CosmicWorm").Type,
+            souls.Find<ModItem>("TrawlerSoul").Type,
+            souls.Find<ModItem>("UniverseSoul").Type,
+            souls.Find<ModItem>("TerrariaSoul").Type,
+            souls.Find<ModItem>("DevisCurse").Type,
+            calamity.Find<ModItem>("DecapoditaSprout").Type,
+            calamity.Find<ModItem>("OverloadedSludge").Type,
+            calamity.Find<ModItem>("CosmicWorm").Type,
         };
         public override bool AppliesToEntity(Item entity, bool lateInstantiation)
         {

@@ -10,6 +10,7 @@ using AbsolutionCore.Content.General.Tiles;
 using Terraria.GameContent.Personalities;
 using CalamityMod.World;
 using FargowiltasSouls;
+using AbsolutionCore.Common.Systems;
 
 namespace AbsolutionCore.Common.Globals
 {
@@ -45,61 +46,14 @@ namespace AbsolutionCore.Common.Globals
             {
                 CalamityMod.CalamityMod.ghostKillCount--;
             }
-            switch(npc.type)
-            {
-                case NPCID.KingSlime:
-                case NPCID.EyeofCthulhu:
-                case NPCID.EaterofWorldsHead:
-                case NPCID.BrainofCthulhu:
-                case NPCID.QueenBee:
-                case NPCID.SkeletronHead:
-                case NPCID.Deerclops:
-                case NPCID.WallofFlesh:
-                case NPCID.QueenSlimeBoss:
-                case NPCID.TheDestroyer:
-                case NPCID.Spazmatism: // no retinazer because things break otherwise
-                case NPCID.SkeletronPrime:
-                case NPCID.Plantera:
-                case NPCID.Golem:
-                case NPCID.HallowBoss:
-                case NPCID.DukeFishron:
-                case NPCID.CultistBoss:
-                case NPCID.MoonLordCore:
-                    CalamityWorld.revenge = true;
-                    CalamityWorld.death = true;
-                    if (FargoSoulsWorld.MasochistModeReal) CalamityWorld.malice = true;
-                    break;
-                default:
-                    break;
-            }
-            base.OnKill(npc);
         }
+
         public override void PostAI(NPC npc)
         {
             switch(npc.type)
             {
-                case NPCID.KingSlime:
-                case NPCID.EyeofCthulhu:
-                case NPCID.EaterofWorldsHead:
-                case NPCID.BrainofCthulhu:
-                case NPCID.QueenBee:
-                case NPCID.SkeletronHead:
-                case NPCID.Deerclops:
-                case NPCID.WallofFlesh:
-                case NPCID.QueenSlimeBoss:
-                case NPCID.TheDestroyer:
-                case NPCID.Retinazer:
-                case NPCID.Spazmatism:
-                case NPCID.SkeletronPrime:
-                case NPCID.Plantera:
-                case NPCID.Golem:
-                case NPCID.HallowBoss:
-                case NPCID.DukeFishron:
-                case NPCID.CultistBoss:
-                case NPCID.MoonLordCore:
-                    CalamityWorld.revenge = false;
-                    CalamityWorld.death = false;
-                    CalamityWorld.malice = false;
+                case NPCID.VoodooDemon:
+                    if (!FargoSoulsWorld.downedDevi) npc.life = 0;
                     break;
                 default:
                     break;

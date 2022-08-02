@@ -1,4 +1,9 @@
 displayName = Absolution Modpack
 author = Absolution Dev Team
-version = 0.1
-modReferences = Fargowiltas,FargowiltasSouls,CalamityMod,ClickerClass
+version = 1.0
+modReferences = Fargowiltas,FargowiltasSouls,CalamityMod
+dllReferences = MMHOOK_CalamityMod
+sortAfter = CalamityMod
+hideCode = true
+hideResources = true
+homepage = https://discord.gg/uRMxkXwJ8q
