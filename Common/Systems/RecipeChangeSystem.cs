@@ -22,6 +22,7 @@ namespace AbsolutionCore.Common.Systems
                 if (recipe.TryGetResult(souls.Find<ModItem>("TrawlerSoul"), out g)) recipe.AddIngredient(calamity.Find<ModItem>("SupremeBaitTackleBoxFishingStation").Type);
                 if (recipe.TryGetResult(souls.Find<ModItem>("SigilOfChampions"), out g)) recipe.DisableRecipe();
                 if (recipe.TryGetResult(souls.Find<ModItem>("DevisCurse"), out g)) recipe.AddIngredient(calamity.Find<ModItem>("PurifiedGel").Type, 5);
+		if (recipe.TryGetResult(calamity.Find<ModItem>("JungleDragonEgg"), out g)) recipe.AddIngredient(souls.Find<ModItem>("AbomEnergy").Type, 5);
                 if (recipe.TryGetResult(calamity.Find<ModItem>("DecapoditaSprout"), out g))
                 {
                     recipe.RemoveTile(TileID.DemonAltar);

@@ -9,7 +9,6 @@
 - Destroy Profaned Guardians dropping Profaned Core
 - Outlaw Titan Hearts being usable at Astral Beacon, change Starcore to require Infected Armor Plating
 - Ban Lunar Event enemies from dropping Meld Blobs, make Astrum Deus drop them instead
-- Add Abominable Energy to Dragon Egg recipe
 - Replace the Terminus in the Abyss with the Inactive Terminus (must be activated with Eternal Energy)
 - Add Cosmic Plushie to a shop post-DoG for 10 platinum
 ## Other changes
