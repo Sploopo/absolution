@@ -12,13 +12,16 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="CalamityMod">
-      <HintPath>..\..\..\..\..\..\AppData\Roaming\TML-Patcher\Extracted\CalamityMod\CalamityMod.dll</HintPath>
+      <HintPath>lib\CalamityMod.dll</HintPath>
     </Reference>
     <Reference Include="ClickerClass">
-      <HintPath>..\..\ModReader\ClickerClass\ClickerClass.dll</HintPath>
+      <HintPath>lib\ClickerClass.dll</HintPath>
+    </Reference>
+    <Reference Include="Fargowiltas">
+      <HintPath>lib\Fargowiltas.dll</HintPath>
     </Reference>
     <Reference Include="FargowiltasSouls">
-      <HintPath>D:\sploo\TML.Patcher.Release.0.2.1.0\Extracted\FargowiltasSouls.tmod\FargowiltasSouls.dll</HintPath>
+      <HintPath>lib\FargowiltasSouls.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>
