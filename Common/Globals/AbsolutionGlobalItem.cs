@@ -6,7 +6,6 @@ using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using CalamityMod;
 using AbsolutionCore.Common.Systems;
-using ClickerClass;
 using FargowiltasSouls;
 
 namespace AbsolutionCore.Common.Globals
