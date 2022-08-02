@@ -20,8 +20,6 @@ namespace AbsolutionCore.Common.Systems
 
                 if (recipe.TryGetIngredient(ItemID.GuideVoodooDoll, out Item g)) recipe.DisableRecipe();
                 if (recipe.TryGetResult(souls.Find<ModItem>("TrawlerSoul"), out g)) recipe.AddIngredient(calamity.Find<ModItem>("SupremeBaitTackleBoxFishingStation").Type);
-                if (recipe.TryGetResult(souls.Find<ModItem>("TerrariaSoul"), out g)) recipe.AddIngredient(Mod.Find<ModItem>("TechnologyForce").Type);
-                if (recipe.TryGetResult(souls.Find<ModItem>("UniverseSoul"), out g)) recipe.AddIngredient(Mod.Find<ModItem>("IdlistSoul").Type);
                 if (recipe.TryGetResult(souls.Find<ModItem>("SigilOfChampions"), out g)) recipe.DisableRecipe();
                 if (recipe.TryGetResult(souls.Find<ModItem>("DevisCurse"), out g)) recipe.AddIngredient(calamity.Find<ModItem>("PurifiedGel").Type, 5);
                 if (recipe.TryGetResult(calamity.Find<ModItem>("DecapoditaSprout"), out g))
@@ -47,8 +45,6 @@ namespace AbsolutionCore.Common.Systems
         List<int> ModifiedItems = new List<int>
         {
             souls.Find<ModItem>("TrawlerSoul").Type,
-            souls.Find<ModItem>("UniverseSoul").Type,
-            souls.Find<ModItem>("TerrariaSoul").Type,
             souls.Find<ModItem>("DevisCurse").Type,
             calamity.Find<ModItem>("DecapoditaSprout").Type,
             calamity.Find<ModItem>("OverloadedSludge").Type,

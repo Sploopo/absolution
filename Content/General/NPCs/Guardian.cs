@@ -104,6 +104,11 @@ namespace AbsolutionCore.Content.General.NPCs
             multiplier = 12f;
         }
 
+        public override bool CanGoToStatue(bool toKingStatue)
+        {
+            return toKingStatue;
+        }
+
         public override string GetChat()
         {
             if (!AbsolutionWorld.GuardianGivenThanks && !Main.bloodMoon)
