@@ -4,7 +4,7 @@
 - Move all Soul of the Universe/Soul of Dimensions components to post-Devourer of Gods, and the Soul of the Universe/Soul of Dimensions themselves to post-Guardian
 - Remove Celestial Shell from Berserker's Soul
 ## Calamity changes
-- Cause the Abyss to kill you without defeating certain bosses (layer 1: Piglin Brute, layer 2: Plantera, layer 3: Old Duke, layer 4: Abominationn)
+- Cause the Abyss to kill you without defeating certain bosses (layer 1: Piglin Brute (ignore for now), layer 2: Plantera, layer 3: Old Duke, layer 4: Abominationn)
 - Prevent Anahita from spawning until Calamitas has been defeated
 - Destroy Profaned Guardians dropping Profaned Core
 - Outlaw Titan Hearts being usable at Astral Beacon, change Starcore to require Infected Armor Plating
