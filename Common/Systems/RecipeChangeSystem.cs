@@ -15,18 +15,18 @@ namespace AbsolutionCore.Common.Systems
         static List<int> ModifiedItems = new List<int>();
         void DisableRecipe(int result, ref Recipe z)
         {
-            if(z.TryGetResult(result, out Item g)) z.DisableRecipe();
             ModifiedItems.Add(result);
+            if (z.TryGetResult(result, out Item g)) z.DisableRecipe();
         }
         void AddIngredient(int result, int ingredient, ref Recipe z, int amount = 1, bool extraRequirement = true)
         {
-            if (z.TryGetResult(result, out Item g) && extraRequirement) z.AddIngredient(ingredient, amount);
             ModifiedItems.Add(result);
+            if (z.TryGetResult(result, out Item g) && extraRequirement) z.AddIngredient(ingredient, amount);
         }
         void AddTile(int tile, int result, ref Recipe z)
         {
-            if (z.TryGetResult(result, out Item g)) z.AddTile(tile);
             ModifiedItems.Add(result);
+            if (z.TryGetResult(result, out Item g)) z.AddTile(tile);
         }
         public override void PostAddRecipes()
         {
