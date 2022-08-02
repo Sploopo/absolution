@@ -11,6 +11,9 @@
     <PackageReference Include="tModLoader.CodeAssist" Version="0.1.*" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="MMHOOK_CalamityMod">
+      <HintPath>lib\MMHOOK_CalamityMod.dll</HintPath>
+    </Reference>
     <Reference Include="CalamityMod">
       <HintPath>lib\CalamityMod.dll</HintPath>
     </Reference>

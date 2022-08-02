@@ -1,4 +1,8 @@
 *~
 obj/
 bin/
+lib/CalamityMod.dll
+lib/Fargowiltas.dll
+lib/FargowiltasSouls.dll
+lib/ClickerClass.dll
 .vs/
