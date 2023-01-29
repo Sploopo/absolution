@@ -27,6 +27,7 @@ namespace AbsolutionCore.Common.Systems
             ModContent.NPCType<CalamityMod.NPCs.ExoMechs.Ares.AresPlasmaFlamethrower>(),
             ModContent.NPCType<CalamityMod.NPCs.ExoMechs.Ares.AresTeslaCannon>(),
             ModContent.NPCType<CalamityMod.NPCs.SupremeCalamitas.SupremeCatastrophe>(),
+            ModContent.NPCType<CalamityMod.NPCs.NormalNPCs.FearlessGoldfishWarrior>(),
             ModContent.NPCType<ThoriumMod.NPCs.DarksteelKnight>(),
             ModContent.NPCType<ThoriumMod.NPCs.AncientCharger>(),
             ModContent.NPCType<ThoriumMod.NPCs.AncientArcher>(),
@@ -131,6 +132,8 @@ namespace AbsolutionCore.Common.Systems
             ModContent.NPCType<ThoriumMod.NPCs.Thunder.TheGrandThunderBirdv2>(),
             ModContent.NPCType<ThoriumMod.NPCs.Thunder.Hatchling>(),
             ModContent.NPCType<FargowiltasSouls.NPCs.Champions.WillChampion>(),
+            ModContent.NPCType<FargowiltasSouls.NPCs.Champions.NatureChampion>(),
+            ModContent.NPCType<FargowiltasSouls.NPCs.Champions.NatureChampionHead>(),
         };
 
         public static List<int> Hallowed = new List<int>
@@ -189,6 +192,7 @@ namespace AbsolutionCore.Common.Systems
             ModContent.NPCType<ThoriumMod.NPCs.FlamekinCaster>(),
             ModContent.NPCType<ThoriumMod.NPCs.BatOutaHell>(),
             ModContent.NPCType<ThoriumMod.NPCs.Scouter.PyroCore>(),
+            ModContent.NPCType<ThoriumMod.NPCs.Primordials.SlagFury>(),
             ModContent.NPCType<FargowiltasSouls.NPCs.Champions.EarthChampion>(),
         };
 
@@ -219,6 +223,7 @@ namespace AbsolutionCore.Common.Systems
             ModContent.NPCType<CalamityMod.NPCs.AcidRain.NuclearTerror>(),
             ModContent.NPCType<CalamityMod.NPCs.OldDuke.OldDuke>(),
             ModContent.NPCType<CalamityMod.NPCs.OldDuke.SulphurousSharkron>(),
+            ModContent.NPCType<ThoriumMod.NPCs.Primordials.Omnicide>(),
         };
 
         public static List<int> IsSlime = new List<int>
@@ -270,6 +275,7 @@ namespace AbsolutionCore.Common.Systems
             ModContent.NPCType<ThoriumMod.NPCs.StrangeBulb>(),
             ModContent.NPCType<ThoriumMod.NPCs.BloomMahoganyEnt>(),
             ModContent.NPCType<ThoriumMod.NPCs.Scouter.BioCore>(),
+            ModContent.NPCType<ThoriumMod.NPCs.MudMan>(),
         };
 
         public static List<int> Dark = new List<int>
@@ -305,6 +311,8 @@ namespace AbsolutionCore.Common.Systems
             ModContent.NPCType<ThoriumMod.NPCs.Beholder.FallenDeathBeholder>(),
             ModContent.NPCType<ThoriumMod.NPCs.Beholder.FallenDeathBeholder2>(),
             ModContent.NPCType<ThoriumMod.NPCs.Beholder.EnemyBeholder>(),
+            ModContent.NPCType<FargowiltasSouls.NPCs.Champions.ShadowChampion>(),
+            ModContent.NPCType<FargowiltasSouls.NPCs.Champions.ShadowOrb>(),
         };
 
         public static List<int> Blood = new List<int>
@@ -405,6 +413,9 @@ namespace AbsolutionCore.Common.Systems
             ModContent.NPCType<ThoriumMod.NPCs.Depths.DepthMimic>(),
             ModContent.NPCType<ThoriumMod.NPCs.Spectrumite>(),
             ModContent.NPCType<ThoriumMod.NPCs.TempleGuardian>(),
+            ModContent.NPCType<FargowiltasSouls.NPCs.Champions.TerraChampion>(),
+            ModContent.NPCType<FargowiltasSouls.NPCs.Champions.TerraChampionBody>(),
+            ModContent.NPCType<FargowiltasSouls.NPCs.Champions.TerraChampionTail>(),
         };
 
         public static List<int> Robotic = new List<int>
@@ -414,6 +425,7 @@ namespace AbsolutionCore.Common.Systems
             ModContent.NPCType<CalamityMod.NPCs.NormalNPCs.WulfrumGyrator>(),
             ModContent.NPCType<CalamityMod.NPCs.NormalNPCs.WulfrumHovercraft>(),
             ModContent.NPCType<CalamityMod.NPCs.NormalNPCs.WulfrumRover>(),
+            ModContent.NPCType<CalamityMod.NPCs.NormalNPCs.ShockstormShuttle>(),
             ModContent.NPCType<CalamityMod.NPCs.PlagueEnemies.Melter>(),
             ModContent.NPCType<CalamityMod.NPCs.PlagueEnemies.PestilentSlime>(),
             ModContent.NPCType<CalamityMod.NPCs.PlagueEnemies.PlaguebringerMiniboss>(),
@@ -436,12 +448,24 @@ namespace AbsolutionCore.Common.Systems
             ModContent.NPCType<CalamityMod.NPCs.ExoMechs.Thanatos.ThanatosHead>(),
             ModContent.NPCType<CalamityMod.NPCs.ExoMechs.Thanatos.ThanatosTail>(),
             ModContent.NPCType<CalamityMod.NPCs.ExoMechs.Draedon>(),
+            ModContent.NPCType<CalamityMod.NPCs.NormalNPCs.ArmoredDiggerBody>(),
+            ModContent.NPCType<CalamityMod.NPCs.NormalNPCs.ArmoredDiggerHead>(),
+            ModContent.NPCType<CalamityMod.NPCs.NormalNPCs.ArmoredDiggerTail>(),
+            ModContent.NPCType<ThoriumMod.NPCs.Scouter.BioCore>(),
+            ModContent.NPCType<ThoriumMod.NPCs.Scouter.CryoCore>(),
+            ModContent.NPCType<ThoriumMod.NPCs.Scouter.PyroCore>(),
+            ModContent.NPCType<ThoriumMod.NPCs.Scouter.ThePrimeScouter>(),
+            ModContent.NPCType<ThoriumMod.NPCs.LostProbe>(),
+            ModContent.NPCType<ThoriumMod.NPCs.UFO>(),
+            ModContent.NPCType<FargowiltasSouls.NPCs.Champions.WillChampion>(),
         };
 
         public static List<int> Skeleton = new List<int>
         {
             // somehow calamity doesn't add any skeletons
-            ModContent.NPCType<ThoriumMod.NPCs.Illusionist>(), // miniboss so doesn't apply because FUNNY
+            ModContent.NPCType<ThoriumMod.NPCs.Illusionist>(), // these are (mini)bosses which don't apply to keeper's circlet despite being humanoid
+            ModContent.NPCType<ThoriumMod.NPCs.Lich.Lich>(),
+            ModContent.NPCType<ThoriumMod.NPCs.Lich.LichHeadless>(),
         };
 
         public static List<int> SkeletonHumanoid = new List<int>
@@ -451,6 +475,136 @@ namespace AbsolutionCore.Common.Systems
             ModContent.NPCType<ThoriumMod.NPCs.AncientPhalanx>(),
             ModContent.NPCType<ThoriumMod.NPCs.BigBone>(),
             ModContent.NPCType<ThoriumMod.NPCs.DarksteelKnight>(),
+            ModContent.NPCType<ThoriumMod.NPCs.Shambler>(),
+        };
+
+        public static List<int> Spirit = new List<int>
+        {
+            ModContent.NPCType<CalamityMod.NPCs.NormalNPCs.PhantomSpirit>(),
+            ModContent.NPCType<CalamityMod.NPCs.NormalNPCs.PhantomSpiritL>(),
+            ModContent.NPCType<CalamityMod.NPCs.NormalNPCs.PhantomSpiritM>(),
+            ModContent.NPCType<CalamityMod.NPCs.NormalNPCs.PhantomSpiritS>(),
+            ModContent.NPCType<CalamityMod.NPCs.NormalNPCs.OverloadedSoldier>(),
+            ModContent.NPCType<CalamityMod.NPCs.Polterghast.Polterghast>(),
+            ModContent.NPCType<CalamityMod.NPCs.Polterghast.PhantomFuckYou>(),
+            ModContent.NPCType<CalamityMod.NPCs.Polterghast.PolterghastHook>(),
+            ModContent.NPCType<CalamityMod.NPCs.Polterghast.PolterPhantom>(),
+            ModContent.NPCType<ThoriumMod.NPCs.Primordials.AngerSpirit>(),
+            ModContent.NPCType<ThoriumMod.NPCs.Primordials.Aquaius>(),
+            ModContent.NPCType<ThoriumMod.NPCs.Primordials.AquaiusBubble>(),
+            ModContent.NPCType<ThoriumMod.NPCs.Primordials.DespairSpirit>(),
+            ModContent.NPCType<ThoriumMod.NPCs.Primordials.DreadSpirit>(),
+            ModContent.NPCType<ThoriumMod.NPCs.Primordials.LucidBubble>(),
+            ModContent.NPCType<ThoriumMod.NPCs.Primordials.Omnicide>(),
+            ModContent.NPCType<ThoriumMod.NPCs.Primordials.RealityBreaker>(),
+            ModContent.NPCType<ThoriumMod.NPCs.Primordials.SlagFury>(),
+            ModContent.NPCType<FargowiltasSouls.NPCs.Champions.SpiritChampion>(),
+            ModContent.NPCType<FargowiltasSouls.NPCs.Champions.SpiritChampionHand>(),
+        };
+
+        public static List<int> Undead = new List<int>
+        {
+            ModContent.NPCType<CalamityMod.NPCs.SupremeCalamitas.SupremeCataclysm>(),
+            ModContent.NPCType<CalamityMod.NPCs.SupremeCalamitas.SupremeCatastrophe>(),
+            ModContent.NPCType<CalamityMod.NPCs.NormalNPCs.OverloadedSoldier>(),
+            ModContent.NPCType<ThoriumMod.NPCs.BloodMoon.Abomination>(),
+            ModContent.NPCType<ThoriumMod.NPCs.BloodMoon.PatchWerk>(),
+            ModContent.NPCType<ThoriumMod.NPCs.BloodMoon.GraveLimb>(),
+            ModContent.NPCType<ThoriumMod.NPCs.BloodMoon.SeveredLegs>(),
+        };
+
+        public static List<int> Wet = new List<int> // god no
+        {
+            ModContent.NPCType<CalamityMod.NPCs.Leviathan.Anahita>(),
+            ModContent.NPCType<CalamityMod.NPCs.Leviathan.LeviathanStart>(),
+            ModContent.NPCType<CalamityMod.NPCs.Leviathan.Leviathan>(),
+            ModContent.NPCType<CalamityMod.NPCs.Leviathan.AquaticAberration>(),
+            ModContent.NPCType<CalamityMod.NPCs.Abyss.Bloatfish>(),
+            ModContent.NPCType<CalamityMod.NPCs.Abyss.BobbitWormHead>(),
+            ModContent.NPCType<CalamityMod.NPCs.Abyss.BobbitWormSegment>(),
+            ModContent.NPCType<CalamityMod.NPCs.Abyss.BoxJellyfish>(),
+            ModContent.NPCType<CalamityMod.NPCs.Abyss.ChaoticPuffer>(),
+            ModContent.NPCType<CalamityMod.NPCs.Abyss.ColossalSquid>(),
+            ModContent.NPCType<CalamityMod.NPCs.Abyss.Cuttlefish>(),
+            ModContent.NPCType<CalamityMod.NPCs.Abyss.DevilFish>(),
+            ModContent.NPCType<CalamityMod.NPCs.Abyss.DevilFishAlt>(),
+            ModContent.NPCType<CalamityMod.NPCs.Abyss.EidolonWyrmBody>(),
+            ModContent.NPCType<CalamityMod.NPCs.Abyss.EidolonWyrmBodyAlt>(),
+            ModContent.NPCType<CalamityMod.NPCs.Abyss.EidolonWyrmHead>(),
+            ModContent.NPCType<CalamityMod.NPCs.Abyss.EidolonWyrmTail>(),
+            ModContent.NPCType<CalamityMod.NPCs.Abyss.GiantSquid>(),
+            ModContent.NPCType<CalamityMod.NPCs.Abyss.GulperEelBody>(),
+            ModContent.NPCType<CalamityMod.NPCs.Abyss.GulperEelBodyAlt>(),
+            ModContent.NPCType<CalamityMod.NPCs.Abyss.GulperEelHead>(),
+            ModContent.NPCType<CalamityMod.NPCs.Abyss.GulperEelTail>(),
+            ModContent.NPCType<CalamityMod.NPCs.Abyss.Laserfish>(),
+            ModContent.NPCType<CalamityMod.NPCs.Abyss.LuminousCorvina>(),
+            ModContent.NPCType<CalamityMod.NPCs.Abyss.MirageJelly>(),
+            ModContent.NPCType<CalamityMod.NPCs.Abyss.MorayEel>(),
+            ModContent.NPCType<CalamityMod.NPCs.Abyss.OarfishBody>(),
+            ModContent.NPCType<CalamityMod.NPCs.Abyss.OarfishHead>(),
+            ModContent.NPCType<CalamityMod.NPCs.Abyss.OarfishTail>(),
+            ModContent.NPCType<CalamityMod.NPCs.Abyss.ReaperShark>(),
+            ModContent.NPCType<CalamityMod.NPCs.Abyss.ToxicMinnow>(),
+            ModContent.NPCType<CalamityMod.NPCs.Abyss.Viperfish>(),
+            ModContent.NPCType<CalamityMod.NPCs.AdultEidolonWyrm.AdultEidolonWyrmBody>(),
+            ModContent.NPCType<CalamityMod.NPCs.AdultEidolonWyrm.AdultEidolonWyrmBodyAlt>(),
+            ModContent.NPCType<CalamityMod.NPCs.AdultEidolonWyrm.AdultEidolonWyrmHead>(),
+            ModContent.NPCType<CalamityMod.NPCs.AdultEidolonWyrm.AdultEidolonWyrmTail>(),
+            ModContent.NPCType<CalamityMod.NPCs.SunkenSea.BabyGhostBell>(),
+            ModContent.NPCType<CalamityMod.NPCs.SunkenSea.BlindedAngler>(),
+            ModContent.NPCType<CalamityMod.NPCs.SunkenSea.Clam>(),
+            ModContent.NPCType<CalamityMod.NPCs.SunkenSea.EutrophicRay>(),
+            ModContent.NPCType<CalamityMod.NPCs.SunkenSea.GhostBell>(),
+            ModContent.NPCType<CalamityMod.NPCs.SunkenSea.GiantClam>(),
+            ModContent.NPCType<CalamityMod.NPCs.SunkenSea.GiantClam>(),
+            ModContent.NPCType<CalamityMod.NPCs.SunkenSea.SeaFloaty>(),
+            ModContent.NPCType<CalamityMod.NPCs.SunkenSea.SeaMinnow>(),
+            ModContent.NPCType<CalamityMod.NPCs.SunkenSea.SeaSerpent1>(),
+            ModContent.NPCType<CalamityMod.NPCs.SunkenSea.SeaSerpent2>(),
+            ModContent.NPCType<CalamityMod.NPCs.SunkenSea.SeaSerpent3>(),
+            ModContent.NPCType<CalamityMod.NPCs.SunkenSea.SeaSerpent4>(),
+            ModContent.NPCType<CalamityMod.NPCs.SunkenSea.SeaSerpent5>(),
+            ModContent.NPCType<CalamityMod.NPCs.NormalNPCs.Frogfish>(),
+            ModContent.NPCType<CalamityMod.NPCs.NormalNPCs.FearlessGoldfishWarrior>(),
+            ModContent.NPCType<ThoriumMod.NPCs.Depths.AbyssalAngler>(),
+            ModContent.NPCType<ThoriumMod.NPCs.Depths.AbyssalAngler2>(),
+            ModContent.NPCType<ThoriumMod.NPCs.Depths.AbyssalSpawn>(),
+            ModContent.NPCType<ThoriumMod.NPCs.Depths.Abyssion>(),
+            ModContent.NPCType<ThoriumMod.NPCs.Depths.AbyssionCracked>(),
+            ModContent.NPCType<ThoriumMod.NPCs.Depths.AbyssionReleased>(),
+            ModContent.NPCType<ThoriumMod.NPCs.Depths.AquaticHallucination>(),
+            ModContent.NPCType<ThoriumMod.NPCs.Depths.Barracuda>(),
+            ModContent.NPCType<ThoriumMod.NPCs.Depths.Blobfish>(),
+            ModContent.NPCType<ThoriumMod.NPCs.Depths.Blowfish>(),
+            ModContent.NPCType<ThoriumMod.NPCs.Depths.BlueLobster>(),
+            ModContent.NPCType<ThoriumMod.NPCs.Depths.CrownofThorns>(),
+            ModContent.NPCType<ThoriumMod.NPCs.Depths.FeedingFrenzy>(),
+            ModContent.NPCType<ThoriumMod.NPCs.Depths.FeedingFrenzy2>(),
+            ModContent.NPCType<ThoriumMod.NPCs.Depths.GiantIsopod>(),
+            ModContent.NPCType<ThoriumMod.NPCs.Depths.GigaClam>(),
+            ModContent.NPCType<ThoriumMod.NPCs.Depths.Globee>(),
+            ModContent.NPCType<ThoriumMod.NPCs.Depths.Hammerhead>(),
+            ModContent.NPCType<ThoriumMod.NPCs.Depths.Kraken>(),
+            ModContent.NPCType<ThoriumMod.NPCs.Depths.ManofWar>(),
+            ModContent.NPCType<ThoriumMod.NPCs.Depths.MorayBody>(),
+            ModContent.NPCType<ThoriumMod.NPCs.Depths.MorayHead>(),
+            ModContent.NPCType<ThoriumMod.NPCs.Depths.MorayTail>(),
+            ModContent.NPCType<ThoriumMod.NPCs.Depths.Octopus>(),
+            ModContent.NPCType<ThoriumMod.NPCs.Depths.PutridSerpent>(),
+            ModContent.NPCType<ThoriumMod.NPCs.Depths.Sharptooth>(),
+            ModContent.NPCType<ThoriumMod.NPCs.Depths.VampireSquid>(),
+            ModContent.NPCType<ThoriumMod.NPCs.Depths.VoltEelBody>(),
+            ModContent.NPCType<ThoriumMod.NPCs.Depths.VoltEelHead>(),
+            ModContent.NPCType<ThoriumMod.NPCs.Depths.VoltEelTail>(),
+            ModContent.NPCType<ThoriumMod.NPCs.Depths.Whale>(),
+            ModContent.NPCType<ThoriumMod.NPCs.QueenJelly.QueenJelly>(),
+            ModContent.NPCType<ThoriumMod.NPCs.QueenJelly.DistractJelly>(),
+            ModContent.NPCType<ThoriumMod.NPCs.QueenJelly.SpittingJelly>(),
+            ModContent.NPCType<ThoriumMod.NPCs.QueenJelly.ZealousJelly>(),
+            ModContent.NPCType<ThoriumMod.NPCs.Primordials.Aquaius>(),
+            ModContent.NPCType<ThoriumMod.NPCs.Primordials.AquaiusBubble>(),
+            ModContent.NPCType<ThoriumMod.NPCs.Primordials.LucidBubble>(),
         };
         public override void Load()
         {
@@ -470,10 +624,10 @@ namespace AbsolutionCore.Common.Systems
             Append(ref NPCLists.IsSlime, IsSlime);
             Append(ref NPCLists.Plantlike, Plantlike);
             Append(ref NPCLists.Robotic, Robotic);
-            // Append(ref NPCLists.Skeleton, Skeleton);
-            // Append(ref NPCLists.SkeletonHumanoid, SkeletonHumanoid);
-            // Append(ref NPCLists.Spirit, Spirit);
-            // Append(ref NPCLists.Undead, Undead);
+            Append(ref NPCLists.Skeleton, Skeleton);
+            Append(ref NPCLists.SkeletonHumanoid, SkeletonHumanoid);
+            Append(ref NPCLists.Spirit, Spirit);
+            Append(ref NPCLists.Undead, Undead);
             // Append(ref NPCLists.Wet, Wet);
         }
         private static void Append(ref List<int> original, List<int> thisList)
