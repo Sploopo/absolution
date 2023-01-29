@@ -1,9 +1,9 @@
 displayName = Absolution Modpack
 author = Absolution Dev Team
 version = 1.0
-modReferences = Fargowiltas,FargowiltasSouls,CalamityMod
+modReferences = FargowiltasSouls,CalamityMod,ThoriumMod,Redemption
 dllReferences = MMHOOK_CalamityMod
-sortAfter = CalamityMod
+sortAfter = FargowiltasSouls,CalamityMod,ThoriumMod,Redemption
 hideCode = true
 hideResources = true
 homepage = https://discord.gg/uRMxkXwJ8q

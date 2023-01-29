@@ -1,3 +1,7 @@
 This is the core mod for the Absolution Modpack - the first Terraria modpack that actually has balancing.
-Absolution is a modpack containing four main content mods: Fargo's Soul Mod, Calamity, Thorium, and Shadows of Abaddon. All four of these mods have been engineered to play with each other as well as possible. For example, Fargo's Souls DLC exists, allowing the player to craft enchantment accessories from all three of the other mods, and stats have been adjusted so the endgame of Calamity lines up perfectly with the endgame of SoA.
-The ultimate goal of the modpack is to craft the Soul of Eternity from Fargo's Soul Mod. You'll need even more patience to do this than normally. Good luck - you're going to need it.
+Absolution is a modpack containing four content mods: Fargo's Souls, Calamity, Thorium, and Redemption. All of these mods have been engineered to play together as well as possible, mainly through balancing and progression tweaks.
+This mod also makes the game much more difficult (or, at least, grindier) through a large number of recipe changes that either make the recipes larger or locked behind phases of progression. If you don't want this, you can turn on "Unbound Mode" in the config.
+
+CREDITS:
+Developers: Sploopo
+Spriters: DeJuiceTD, Split

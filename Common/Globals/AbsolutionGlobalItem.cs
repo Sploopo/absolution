@@ -16,36 +16,42 @@ namespace AbsolutionCore.Common.Globals
         {
             string tooltip;
             Color[] colors = { new Color(128, 0, 255), new Color(255, 0, 255) };
-            Color[] specialColors = { new Color(211, 53, 53), new Color(167, 38, 229) };
             int index = (int)(Main.GameUpdateCount / 60) % 2;
-            if (item.type == ModLoader.GetMod("FargowiltasSouls").Find<ModItem>("SigilOfChampions").Type) 
+            if (item.type == ModLoader.GetMod("FargowiltasSouls").Find<ModItem>("SigilOfChampions").Type)
             {
                 tooltip = "WARNING: This is the wrong version of the Sigil of Champions. Absolution adds a new one.";
             }
-            else if (item.type == ModLoader.GetMod("FargowiltasSouls").Find<ModItem>("SquirrelCoatofArms").Type && !AbsolutionWorld.UsedSSOTSOTCMG)
+            else if (item.type == ModContent.ItemType<FargowiltasSouls.Items.Masochist>())
             {
-                TooltipLine specialLine = new TooltipLine(Mod, "SquirrelCoatTooltip", "The Satanic Scepter of the Sigil of the Corrupted Mutant's Gift burns more intensely while you hold this...");
-                specialLine.OverrideColor = Color.Lerp(specialColors[index], specialColors[(index + 1) % 2], (Main.GameUpdateCount % 60) / 60f);
-                tooltips.Add(specialLine);
-                return;
+                tooltip = "Cannot be used, Eternity Mode is automatically enabled. Ignore the message about not using with other modded difficulties.";
             }
-            else if(item.type == ModContent.ItemType<FargowiltasSouls.Items.Masochist>() || item.type == ModContent.ItemType<CalamityMod.Items.DifficultyItems.RevengeanceModeItem>()
-                || item.type == ModContent.ItemType<CalamityMod.Items.DifficultyItems.DeathModeItem>() ||
-                item.type == ModContent.ItemType<CalamityMod.Items.DifficultyItems.MaliceModeItem>())
+            else if (item.type == ModContent.ItemType<CalamityMod.Items.PermanentBoosters.CelestialOnion>() && !AbsolutionConfig.Instance.UnboundMode)
             {
-                TooltipLine specialLine = new TooltipLine(Mod, "NoDifficultyChangeTooltip", AbsolutionWorld.UsedSSOTSOTCMG ? "You cannot go back now." : "The item is unusable. It seems to be powering the Satanic Scepter of the Sigil of the Corrupted Mutant's Gift...");
-                specialLine.OverrideColor = Color.Lerp(specialColors[index], specialColors[(index + 1) % 2], (Main.GameUpdateCount % 60) / 60f);
-                tooltips.Add(specialLine);
-                return;
-            } else if(item.type == ItemID.ReaverShark && DownedBossSystem.downedHiveMind && DownedBossSystem.downedPerforator)
+                tooltip = "Cannot be used, Mutant's Pact should be used instead";
+            }
+            else if (item.type == ItemID.ReaverShark && DownedBossSystem.downedHiveMind && DownedBossSystem.downedPerforator && !AbsolutionConfig.Instance.UnboundMode)
             {
                 tooltip = "Pickaxe power increases to 100% after defeating the Hive Mind or Perforators";
-            } else if(item.type == ModContent.ItemType<Content.General.Items.SigilOfChampionsButAwesome>())
+            }
+            else if (item.type == ModContent.ItemType<Content.Items.SigilOfChampionsButAwesome>())
             {
                 tooltip = "Most Champions are locked behind certain bosses";
-            } else if(item.type == ModContent.ItemType<CalamityMod.Items.SummonItems.EidolonTablet>() && DownedBossSystem.downedPlaguebringer)
+            }
+            else if (item.type == ModContent.ItemType<CalamityMod.Items.SummonItems.EidolonTablet>() && DownedBossSystem.downedPlaguebringer)
             {
                 tooltip = "Cannot be used before defeating the Plaguebringer Goliath";
+            }
+            else if (item.type == ModContent.ItemType<CalamityMod.Items.Materials.TitanHeart>() && !NPC.downedAncientCultist && !AbsolutionConfig.Instance.UnboundMode)
+            {
+                tooltip = "Cannot summon Astrum Deus before the Lunatic Cultist is defeated";
+            }
+            else if (item.type == ModContent.ItemType<CalamityMod.Items.SummonItems.Terminus>())
+            {
+                tooltip = "Absolution currently does not edit the Boss Rush. Support will come in a future update. ";
+            }
+            else if ((item.type == ModContent.ItemType<Redemption.Items.Usable.Summons.HeartOfThorns>() || item.type == ModContent.ItemType<Redemption.Items.Usable.Summons.DemonScroll>()) && !AbsolutionWorld.DownedTrojanSquirrel && !AbsolutionConfig.Instance.UnboundMode)
+            {
+                tooltip = "You're not sure how to use this item yet...";
             }
             else
             {
@@ -61,31 +67,8 @@ namespace AbsolutionCore.Common.Globals
             switch(item.type)
             {
                 case ItemID.ReaverShark:
-                    item.pick = 59;
+                    if(!AbsolutionConfig.Instance.UnboundMode) item.pick = 59;
                     if (DownedBossSystem.downedHiveMind || DownedBossSystem.downedPerforator) item.pick = 100;
-                    break;
-                case ItemID.SlimeCrown:
-                case ItemID.SuspiciousLookingEye:
-                case ItemID.WormFood:
-                case ItemID.BloodySpine:
-                case ItemID.Abeemination:
-                case ItemID.DeerThing:
-                case ItemID.QueenSlimeCrystal:
-                case ItemID.MechanicalEye:
-                case ItemID.MechanicalSkull:
-                case ItemID.MechanicalWorm:
-                case ItemID.LihzahrdPowerCell:
-                case ItemID.TruffleWorm:
-                case ItemID.CelestialSigil:
-                case ItemID.BloodMoonStarter:
-                case ItemID.GoblinBattleStandard:
-                case ItemID.PirateMap:
-                case ItemID.SolarTablet:
-                case ItemID.SnowGlobe:
-                case ItemID.PumpkinMoonMedallion:
-                case ItemID.NaughtyPresent:
-                    item.consumable = false;
-                    item.maxStack = 9999;
                     break;
                 default:
                     break;
@@ -97,22 +80,18 @@ namespace AbsolutionCore.Common.Globals
             {
                 case ItemID.SlimeCrown:
                 case ItemID.SuspiciousLookingEye:
-                    if (!AbsolutionWorld.DownedTrojanSquirrel) return false;
+                    if (!AbsolutionWorld.DownedTrojanSquirrel && !AbsolutionConfig.Instance.UnboundMode) return false;
                     break;
                 default:
                     break;
             }
-            if (item.type == ModContent.ItemType<FargowiltasSouls.Items.Summons.SquirrelCoatofArms>() && !AbsolutionWorld.UsedSSOTSOTCMG) return false;
-            else if ((item.type == ModContent.ItemType<FargowiltasSouls.Items.Masochist>() || item.type == ModContent.ItemType<CalamityMod.Items.DifficultyItems.RevengeanceModeItem>()
-                || item.type == ModContent.ItemType<CalamityMod.Items.DifficultyItems.DeathModeItem>() ||
-                item.type == ModContent.ItemType<CalamityMod.Items.DifficultyItems.MaliceModeItem>())) return false;
-            else if (item.type == ModContent.ItemType<CalamityMod.Items.SummonItems.EidolonTablet>() && DownedBossSystem.downedPlaguebringer) return false;
-            return true;
-        }
-
-        public override bool? UseItem(Item item, Player player)
-        {
-            return true;
+            if (item.type == ModContent.ItemType<FargowiltasSouls.Items.Masochist>() && !AbsolutionConfig.Instance.UnboundMode) return false;
+            else if ((item.type == ModContent.ItemType<Fargowiltas.Items.Summons.SlimyCrown>() || item.type == ModContent.ItemType<Fargowiltas.Items.Summons.SuspiciousEye>() 
+                || item.type == ModContent.ItemType<ThoriumMod.Items.ThunderBird.GrandFlareGun>() || item.type == ModContent.ItemType<Redemption.Items.Usable.Summons.HeartOfThorns>()
+                || item.type == ModContent.ItemType<Redemption.Items.Usable.Summons.DemonScroll>()) && !AbsolutionWorld.DownedTrojanSquirrel && !AbsolutionConfig.Instance.UnboundMode) return false;
+            else if (item.type == ModContent.ItemType<CalamityMod.Items.SummonItems.EidolonTablet>() && DownedBossSystem.downedPlaguebringer && !AbsolutionConfig.Instance.UnboundMode) return false;
+            else if (item.type == ModContent.ItemType<CalamityMod.Items.PermanentBoosters.CelestialOnion>() && !AbsolutionConfig.Instance.UnboundMode) return false;
+            return base.CanUseItem(item, player);
         }
     }
 }

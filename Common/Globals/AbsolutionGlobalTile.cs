@@ -11,7 +11,7 @@ namespace AbsolutionCore.Common.Globals
             switch(type)
             {
                 case TileID.ShadowOrbs:
-                    if (!NPC.downedBoss1) return false;
+                    if (!NPC.downedBoss1 && !AbsolutionConfig.Instance.UnboundMode) return false;
                     break;
                 default:
                     break;

@@ -2,21 +2,49 @@
 	AbsolutionCore: {
 		TownNPCMood: {
 			Guardian: {
-				Content: I feel at ease. Keep this balance intact.
-				NoHome: You can have no order have you not a place to live. So, can I crash at your place?
-				LoveSpace: Having all of this space to myself is peaceful.
-				FarFromHome: There's way too much chaos this far from home. You got, like, a car or something?
-				DislikeCrowded: Too many people are here. Peace and order is destabilizing.
-				HateCrowded: What's with all these people? There's way too much chaos here. Fix it.
-				LikeBiome: "There are not many biomes more pure than {BiomeName}. I'm a big fan."
-				DislikeBiome: "I get where {BiomeName} is coming from, but this seems a bit much."
-				HateBiome: "Being in {BiomeName} is... awful. This is the antithesis of order, why'd you bring me here?"
-				LikeNPC: "I knew {NPCName} a long, long time ago, and that's saying something coming from me. Great to have him back."
-				LikeNPC_Princess: "I don't exactly have the best track record with royalty, but {NPCName} seems fine."
-				LoveNPC: "{NPCName} has some great... uh... sense to devote herself to keeping balance."
-				DislikeNPC: "I get that it's all behind us, but everything that {NPCName} has done makes our people look bad."
-				HateNPC: "... Let's just say that I've seen what {NPCName} is capable of and leave it at that."
+				Content: Not much to say, I am as well as I have always been.
+				NoHome: I have been through a few years of homelessness. I can safely say that having a house is better.
+				LoveSpace: There are not many people around here. It reminds me of when the world was young... those were the days.
+				FarFromHome: I may be skilled at not dying, but I still like to be at home out of the way of monsters.
+				DislikeCrowded: In my experience, louder places generally mean more trouble. I would rather not be here.
+				HateCrowded: I thought the world population was declining, but overpopulation this absurd makes me think otherwise.
+				HateBiome: "I have had to travel through {BiomeName} quite a lot during my years, and it's always been a terrible experience."
+				LikeNPC: "{NPCName}, despite all the killing and destruction, has had a rough life. I feel only sympathy for her."
+				LikeNPC_Princess: "I do not exactly have the best track record with royalty, but {NPCName} seems fine."
+				LoveNPC: "{NPCName} is here? I remember practicing magic with him a while back, it is great to see him here."
+				HateNPC: "... Let us just say that I have seen what {NPCName} is capable of and leave it at that."
 			}
+		}
+		Config: {
+			UnboundMode: Unbound Mode
+			UnboundModeDesc: "Disables all changes made for the sole purpose of difficulty or linearity. Requires a reload to take effect.\nThis is not the recommended way to play the modpack and will break all balancing.\nHave fun."
+			WingSlotWarning: Wing Slot Warning
+		}
+		JourneyModeMessage: You are playing in Journey Mode. Please remember to set the Enemy Difficulty Slider to 2x, otherwise things may break.
+		WingSlotWarning1: Warning: you have the Wing Slot Extra mod enabled. Wing Slot adds an extra accessory slot, which breaks balancing.
+		WingSlotWarning2: It is highly recommended that you disable the mod when playing with the Absolution Modpack. If you wish to continue playing with Wing Slot, you may disable this message in the Absolution config.
+		GuardianBossDialogue: {
+			PreFight1: I came to kick gum
+			PreFight2: and chew ass...[20]
+			PreFight3: ...[20] and I'm all out of ass.[30]
+		}
+		GuardianKnowledgeChat: {
+			Timber1: Huh? [10]You have something for me? Let me take a look at it.
+			Timber2: ... [30]Oh, this! I know what this is. [20]What you have here is an old encyclopedia. It catalogues a multitude of the world's wonders and creatures, as well as how to access them.
+			Timber3: The knowledge contained within this book must be something you can use. Allow me to translate... [60]...
+			Timber4: Alright, done. I have translated many important facts for you. I hope this proves helpful.
+			TimberExplanation: You have learned how to use a variety of new items and recipes. Obtain and translate more of these books to unlock more items and recipes.
+		}
+		RecipeConditions: {
+			TimberKnowledge: Vol. 1 Knowledge Translated
+			TerraKnowledge: Vol. 2 Knowledge Translated
+			SpiritKnowledge: Vol. 3 Knowledge Translated
+			LifeKnowledge: Vol. 4 Knowledge Translated
+			ShadowKnowledge: Vol. 5 Knowledge Translated
+			NatureKnowledge: Vol. 6 Knowledge Translated
+			EarthKnowledge: Vol. 7 Knowledge Translated
+			WillKnowledge: Vol. 8 Knowledge Translated
+			CosmosKnowledge: Complete Edition Knowledge Translated
 		}
 	}
 }
