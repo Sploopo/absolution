@@ -27,7 +27,7 @@
       <HintPath>..\..\ModReader\Redemption\Redemption.dll</HintPath>
     </Reference>
     <Reference Include="ThoriumMod">
-      <HintPath>D:\D\SteamLibrary\steamapps\workshop\content\1281930\2909886416\ThoriumMod\ThoriumMod.dll</HintPath>
+      <HintPath>D:\D\SteamLibrary\steamapps\workshop\content\1281930\2909886416\2022.9\ThoriumMod\ThoriumMod.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

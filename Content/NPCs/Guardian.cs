@@ -83,7 +83,7 @@ namespace AbsolutionCore.Content.NPCs
             bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
             {
                 BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Times.NightTime,
-                new FlavorTextBestiaryInfoElement("An unknown figure who seems to know more about the world than anyone. He was found trapped in a box, but why?")
+                new FlavorTextBestiaryInfoElement("While he doesn't look very old, his knowledge of history tells a different story. His age may be uncertain, but he's sure to help you thrive in this world.")
             });
         }
 

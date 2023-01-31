@@ -63,7 +63,7 @@ namespace AbsolutionCore.Content.NPCs.GuardianBoss
             NPC.height = 120;
             NPC.damage = 45;
             NPC.defense = 220;
-            NPC.lifeMax = FargoSoulsWorld.MasochistModeReal ? 1250000 : 800000;
+            NPC.lifeMax = 400000;
             NPC.value = Item.buyPrice(3);
             NPC.HitSound = SoundID.NPCHit1;
             NPC.noGravity = true;
@@ -77,16 +77,16 @@ namespace AbsolutionCore.Content.NPCs.GuardianBoss
             Music = MusicLoader.GetMusicSlot(Mod, "Assets/Music/depot");
             SceneEffectPriority = SceneEffectPriority.BossHigh;
         }
-        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-        {
-            NPC.damage = (int)(NPC.damage * 0.5f);
-            NPC.lifeMax = (int)(NPC.lifeMax * bossLifeScale / bossLifeScale);
-        }
-
         public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
         {
             damage *= exhausted == 1 ? 0.8f : 0.25f;
             return true;
+        }
+
+        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+        {
+            NPC.damage = (int)(NPC.damage * 0.5f);
+            NPC.lifeMax = (int)(NPC.lifeMax * bossLifeScale);
         }
 
         public override void FindFrame(int frameHeight)
@@ -165,7 +165,7 @@ namespace AbsolutionCore.Content.NPCs.GuardianBoss
             voice2.Pitch = -0.4f;
             SoundStyle voice = voice2;
 
-            if(NPC.ai[0] >= 0)
+            if(NPC.ai[0] >= 0 && !Main.dedServ)
             {
                 targetPos = player.Center + NPC.DirectionFrom(player.Center) * 300f;
                 if (NPC.Distance(targetPos) > 50) MoveTo(targetPos, 0.23f, 26f);
@@ -190,12 +190,6 @@ namespace AbsolutionCore.Content.NPCs.GuardianBoss
                     Music = MusicLoader.GetMusicSlot(Mod, "Assets/Music/silence");
                     NPC.dontTakeDamage = true;
                     NPC.GivenName = AbsolutionWorld.GuardianName;
-
-                    if (NPC.ai[3] >= 90 && !(!Main.dayTime && Main.time <= 16150 && Main.time >= 16250)) Main.fastForwardTime = true; else // fast forward time to night
-                    {
-                        Main.dayTime = false;
-                        Main.time = 16200;
-                    }
 
                     if (NPC.ai[3] == 31)
                     {

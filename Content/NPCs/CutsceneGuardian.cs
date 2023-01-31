@@ -32,13 +32,12 @@ namespace AbsolutionCore.Content.NPCs
             NPC.height = 46;
             NPC.aiStyle = -1;
             NPC.defense = 15;
-            NPC.lifeMax = 12345;
+            NPC.lifeMax = 6969;
             NPC.HitSound = SoundID.NPCHit1;
             NPC.DeathSound = SoundID.NPCDeath1;
             NPC.knockBackResist = 0.5f;
             NPC.dontTakeDamage = true;
         }
-
         public override void AI()
         {
             NPC.TargetClosest();

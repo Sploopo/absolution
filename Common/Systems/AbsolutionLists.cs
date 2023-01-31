@@ -253,7 +253,7 @@ namespace AbsolutionCore.Common.Systems
             ModContent.NPCType<CalamityMod.NPCs.SlimeGod.SlimeGodCore>(),
             ModContent.NPCType<CalamityMod.NPCs.SlimeGod.SplitCrimulanSlimeGod>(),
             ModContent.NPCType<CalamityMod.NPCs.SlimeGod.SplitEbonianSlimeGod>(),
-            ModContent.NPCType<ThoriumMod.NPCs.LivingHemorage>(),
+            ModContent.NPCType<ThoriumMod.NPCs.LivingHemorrhage>(),
             ModContent.NPCType<ThoriumMod.NPCs.Clot>(),
             ModContent.NPCType<ThoriumMod.NPCs.GildedSlime>(),
             ModContent.NPCType<ThoriumMod.NPCs.GildedSlimeMini>(),
@@ -346,7 +346,7 @@ namespace AbsolutionCore.Common.Systems
             ModContent.NPCType<ThoriumMod.NPCs.BloodMoon.BloodMage>(),
             ModContent.NPCType<ThoriumMod.NPCs.Biter>(),
             ModContent.NPCType<ThoriumMod.NPCs.Coolmera>(),
-            ModContent.NPCType<ThoriumMod.NPCs.LivingHemorage>(),
+            ModContent.NPCType<ThoriumMod.NPCs.LivingHemorrhage>(),
             ModContent.NPCType<ThoriumMod.NPCs.Clot>(),
             ModContent.NPCType<ThoriumMod.NPCs.FrozenFace>(),
             ModContent.NPCType<ThoriumMod.NPCs.FrozenGross>(),
@@ -628,7 +628,7 @@ namespace AbsolutionCore.Common.Systems
             Append(ref NPCLists.SkeletonHumanoid, SkeletonHumanoid);
             Append(ref NPCLists.Spirit, Spirit);
             Append(ref NPCLists.Undead, Undead);
-            // Append(ref NPCLists.Wet, Wet);
+            Append(ref NPCLists.Wet, Wet);
         }
         private static void Append(ref List<int> original, List<int> thisList)
         {
