@@ -17,7 +17,7 @@ namespace AbsolutionCore.Common.Systems
 {
     public class AbsolutionLists : ModSystem
     {
-        // nightmare
+        // ENEMY LISTS
         public static List<int> Armed = new List<int>
         {
             ModContent.NPCType<CalamityMod.NPCs.Leviathan.Anahita>(),
@@ -94,10 +94,10 @@ namespace AbsolutionCore.Common.Systems
             ModContent.NPCType<CalamityMod.NPCs.Crags.Scryllar>(),
             ModContent.NPCType<CalamityMod.NPCs.Crags.ScryllarRage>(),
             ModContent.NPCType<CalamityMod.NPCs.Crags.SoulSlurper>(),
-            ModContent.NPCType<CalamityMod.NPCs.Calamitas.CalamitasClone>(),
-            ModContent.NPCType<CalamityMod.NPCs.Calamitas.Cataclysm>(),
-            ModContent.NPCType<CalamityMod.NPCs.Calamitas.Catastrophe>(),
-            ModContent.NPCType<CalamityMod.NPCs.Calamitas.SoulSeeker>(),
+            ModContent.NPCType<CalamityMod.NPCs.CalClone.CalamitasClone>(),
+            ModContent.NPCType<CalamityMod.NPCs.CalClone.Cataclysm>(),
+            ModContent.NPCType<CalamityMod.NPCs.CalClone.Catastrophe>(),
+            ModContent.NPCType<CalamityMod.NPCs.CalClone.SoulSeeker>(),
             ModContent.NPCType<CalamityMod.NPCs.SupremeCalamitas.BrimstoneHeart>(),
             ModContent.NPCType<CalamityMod.NPCs.SupremeCalamitas.SepulcherArm>(),
             ModContent.NPCType<CalamityMod.NPCs.SupremeCalamitas.SepulcherHead>(),
@@ -285,7 +285,7 @@ namespace AbsolutionCore.Common.Systems
             ModContent.NPCType<CalamityMod.NPCs.HiveMind.DarkHeart>(),
             ModContent.NPCType<CalamityMod.NPCs.HiveMind.HiveBlob>(),
             ModContent.NPCType<CalamityMod.NPCs.HiveMind.HiveBlob2>(),
-            ModContent.NPCType<CalamityMod.NPCs.HiveMind.HiveCyst>(),
+            ModContent.NPCType<CalamityMod.NPCs.HiveMind.HiveTumor>(),
             ModContent.NPCType<CalamityMod.NPCs.HiveMind.HiveMind>(),
             ModContent.NPCType<CalamityMod.NPCs.SlimeGod.EbonianSlimeGod>(),
             ModContent.NPCType<CalamityMod.NPCs.SlimeGod.SplitEbonianSlimeGod>(),
@@ -395,9 +395,9 @@ namespace AbsolutionCore.Common.Systems
             ModContent.NPCType<CalamityMod.NPCs.NormalNPCs.CrawlerRuby>(),
             ModContent.NPCType<CalamityMod.NPCs.NormalNPCs.CrawlerSapphire>(),
             ModContent.NPCType<CalamityMod.NPCs.NormalNPCs.CrawlerTopaz>(),
-            ModContent.NPCType<CalamityMod.NPCs.Calamitas.CalamitasClone>(),
-            ModContent.NPCType<CalamityMod.NPCs.Calamitas.Cataclysm>(),
-            ModContent.NPCType<CalamityMod.NPCs.Calamitas.Catastrophe>(),
+            ModContent.NPCType<CalamityMod.NPCs.CalClone.CalamitasClone>(),
+            ModContent.NPCType<CalamityMod.NPCs.CalClone.Cataclysm>(),
+            ModContent.NPCType<CalamityMod.NPCs.CalClone.Catastrophe>(),
             ModContent.NPCType<ThoriumMod.NPCs.GraniteEradicator>(),
             ModContent.NPCType<ThoriumMod.NPCs.GraniteFusedSlime>(),
             ModContent.NPCType<ThoriumMod.NPCs.GraniteSurger>(),
@@ -606,10 +606,42 @@ namespace AbsolutionCore.Common.Systems
             ModContent.NPCType<ThoriumMod.NPCs.Primordials.AquaiusBubble>(),
             ModContent.NPCType<ThoriumMod.NPCs.Primordials.LucidBubble>(),
         };
+
+        // ITEM LISTS
+        List<int> MeldWeapons = new List<int>()
+        {
+            ModContent.ItemType<CalamityMod.Items.Weapons.Magic.TomeofFates>(),
+            ModContent.ItemType<CalamityMod.Items.Tools.GenesisPickaxe>(),
+            ModContent.ItemType<CalamityMod.Items.Weapons.Ranged.GodsBellows>(),
+            ModContent.ItemType<CalamityMod.Items.Weapons.Magic.CosmicRainbow>(),
+            ModContent.ItemType<CalamityMod.Items.Weapons.Melee.EntropicClaymore>(),
+            ModContent.ItemType<CalamityMod.Items.Weapons.Rogue.ShardofAntumbra>(),
+            ModContent.ItemType<CalamityMod.Items.Weapons.Rogue.StarofDestruction>(),
+            ModContent.ItemType<CalamityMod.Items.Weapons.Rogue.LuminousStriker>(),
+        };
+
+        List<int> BluntSwing = new List<int>();
+        List<int> Arcane = new List<int>();
+        List<int> Fire = new List<int>();
+        List<int> Water = new List<int>();
+        List<int> Ice = new List<int>();
+        List<int> Earth = new List<int>();
+        List<int> Wind = new List<int>();
+        List<int> Thunder = new List<int>();
+        List<int> Holy = new List<int>();
+        List<int> Shadow = new List<int>();
+        List<int> Nature = new List<int>();
+        List<int> Poison = new List<int>();
+        List<int> WBlood = new List<int>();
+        List<int> Psychic = new List<int>();
+        List<int> Celestial = new List<int>();
+        List<int> NoElement = new List<int>();
         public override void Load()
         {
             Append(ref Inorganic, Robotic);
             Append(ref Skeleton, SkeletonHumanoid);
+            Append(ref Shadow, MeldWeapons);
+            Append(ref Celestial, MeldWeapons);
 
             Append(ref NPCLists.Armed, Armed);
             Append(ref NPCLists.Blood, Blood);
@@ -629,6 +661,23 @@ namespace AbsolutionCore.Common.Systems
             Append(ref NPCLists.Spirit, Spirit);
             Append(ref NPCLists.Undead, Undead);
             Append(ref NPCLists.Wet, Wet);
+
+            Append(ref ItemLists.BluntSwing, BluntSwing);
+            Append(ref ItemLists.Arcane, Arcane);
+            Append(ref ItemLists.Fire, Fire);
+            Append(ref ItemLists.Water, Water);
+            Append(ref ItemLists.Ice, Ice);
+            Append(ref ItemLists.Earth, Earth);
+            Append(ref ItemLists.Wind, Wind);
+            Append(ref ItemLists.Thunder, Thunder);
+            Append(ref ItemLists.Holy, Holy);
+            Append(ref ItemLists.Shadow, Shadow);
+            Append(ref ItemLists.Nature, Nature);
+            Append(ref ItemLists.Poison, Poison);
+            Append(ref ItemLists.Blood, WBlood);
+            Append(ref ItemLists.Psychic, Psychic);
+            Append(ref ItemLists.Celestial, Celestial);
+            Append(ref ItemLists.NoElement, NoElement);
         }
         private static void Append(ref List<int> original, List<int> thisList)
         {

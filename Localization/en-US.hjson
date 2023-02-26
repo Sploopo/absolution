@@ -11,7 +11,6 @@
 				HateBiome: "I have had to travel through {BiomeName} quite a lot during my years, and it's always been a terrible experience."
 				LikeNPC: "{NPCName}, despite all the killing and destruction, has had a rough life. I feel only sympathy for her."
 				LikeNPC_Princess: "I do not exactly have the best track record with royalty, but {NPCName} seems fine."
-				LoveNPC: "{NPCName} is here? I remember practicing magic with him a while back, it is great to see him here."
 				HateNPC: "... Let us just say that I have seen what {NPCName} is capable of and leave it at that."
 			}
 		}
@@ -34,6 +33,18 @@
 			Timber3: The knowledge contained within this book must be something you can use. Allow me to translate... [60]...
 			Timber4: Alright, done. I have translated many important facts for you. I hope this proves helpful.
 			TimberExplanation: You have learned how to use a variety of new items and recipes. Obtain and translate more of these books to unlock more items and recipes.
+			Terra1: You have something else?[10]Is this another book?
+			Terra2: ... [20]Ah! This is the second volume of the encyclopedia you found previously. I will translate again.
+
+		}
+		GuardianIntroChat: {
+			Chat1: "*cough*[20] *wheeze*[20] urgh, that was painful - [20]huh?"
+			Chat2: "Hello? Who are you? Who sent you? I swear, I am not afraid to-"
+			Chat3: "...[30] ah. Please excuse me, I assumed you were here to...[20] never mind."
+			Chat4A: "Allow me to introduce myself. My name is"
+			Chat4B: ", but I am also referred to as the Guardian. I am a scientist, historian, and scholar who happens to also be a bit... [30]what was the word? [20]Immortal."
+			Chat5: "Now, I want to make a deal with you. [20]You look like someone who wants to learn more about our world, and I probably know the most about it out of anybody out there."
+			Chat6: "So, if you provided me with a place to stay, I believe that I could assist you."
 		}
 		RecipeConditions: {
 			TimberKnowledge: Vol. 1 Knowledge Translated

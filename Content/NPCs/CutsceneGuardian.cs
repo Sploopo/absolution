@@ -12,17 +12,20 @@ using Redemption.BaseExtension;
 using Redemption.Globals;
 using Redemption.UI;
 using Terraria.GameContent.UI;
+using Terraria.GameContent.Bestiary;
 
 namespace AbsolutionCore.Content.NPCs
 {
-    [AutoloadHead]
     public class CutsceneGuardian : ModNPC
     {
         public int frame = 0;
         public override void SetStaticDefaults()
         {
-            Main.npcFrameCount[Type] = 2;
-            DisplayName.SetDefault("Guardian");
+            Main.npcFrameCount[Type] = 4;
+            DisplayName.SetDefault("???");
+
+            NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { Hide = true };
+            NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, value);
         }
 
         public override void SetDefaults()
@@ -38,10 +41,11 @@ namespace AbsolutionCore.Content.NPCs
             NPC.knockBackResist = 0.5f;
             NPC.dontTakeDamage = true;
         }
+
         public override void AI()
         {
             NPC.TargetClosest();
-            NPC.GivenName = AbsolutionWorld.GuardianName;
+            if(NPC.ai[1] != 0) NPC.GivenName = AbsolutionWorld.GuardianName;
             Player player = Main.player[NPC.target];
 
             Texture2D bubble = ModContent.Request<Texture2D>("AbsolutionCore/Assets/Textures/TextBubble_Guardian", (AssetRequestMode)2).Value;
@@ -50,8 +54,43 @@ namespace AbsolutionCore.Content.NPCs
             SoundStyle voice = voice2;
 
             NPC.ai[0]++;
+            NPC.ai[3]++;
             switch (NPC.ai[1])
             {
+                case 0:
+                    player.RedemptionScreen().ScreenFocusPosition = base.NPC.Center;
+                    player.RedemptionScreen().lockScreen = true;
+                    player.RedemptionScreen().cutscene = true;
+                    NPC.LockMoveRadius(player);
+                    if (NPC.ai[2] != 1) NPC.LookAtEntity(player);
+                    else if (Main.rand.NextBool(12) && NPC.ai[3] >= 7)
+                    {
+                        NPC.spriteDirection = -NPC.spriteDirection;
+                        NPC.direction = -NPC.direction;
+                        NPC.ai[3] = 0;
+                    }
+                    if (NPC.ai[0] == 10 && !Main.dedServ)
+                    {
+                        frame = 2;
+                        DialogueChain chain = new DialogueChain();
+                        chain.Add(new Dialogue(NPC, Language.GetTextValue("Mods.AbsolutionCore.GuardianIntroChat.Chat1"), new Color(128, 0, 255), new Color(67, 0, 135), voice, 2, 100, 0, false,
+                            ModContent.Request<Texture2D>("AbsolutionCore/Content/NPCs/GuardianBoss/GuardianBoss_Head_Boss", (AssetRequestMode)2).Value, bubble, endID: 4))
+                            .Add(new Dialogue(NPC, Language.GetTextValue("Mods.AbsolutionCore.GuardianIntroChat.Chat2"), new Color(128, 0, 255), new Color(67, 0, 135), voice, 2, 100, 0, false,
+                            ModContent.Request<Texture2D>("AbsolutionCore/Content/NPCs/GuardianBoss/GuardianBoss_Head_Boss", (AssetRequestMode)2).Value, bubble, endID: 3))
+                            .Add(new Dialogue(NPC, Language.GetTextValue("Mods.AbsolutionCore.GuardianIntroChat.Chat3"), new Color(128, 0, 255), new Color(67, 0, 135), voice, 2, 100, 0, false,
+                            ModContent.Request<Texture2D>("AbsolutionCore/Content/NPCs/GuardianBoss/GuardianBoss_Head_Boss", (AssetRequestMode)2).Value, bubble, endID: 5))
+                            .Add(new Dialogue(NPC, Language.GetTextValue("Mods.AbsolutionCore.GuardianIntroChat.Chat4A") + " " + AbsolutionWorld.GuardianName + Language.GetTextValue("Mods.AbsolutionCore.GuardianIntroChat.Chat4B"), new Color(128, 0, 255), new Color(67, 0, 135), voice, 2, 100, 0, false,
+                            ModContent.Request<Texture2D>("AbsolutionCore/Content/NPCs/GuardianBoss/GuardianBoss_Head_Boss", (AssetRequestMode)2).Value, bubble))
+                            .Add(new Dialogue(NPC, Language.GetTextValue("Mods.AbsolutionCore.GuardianIntroChat.Chat5"), new Color(128, 0, 255), new Color(67, 0, 135), voice, 2, 100, 0, false,
+                            ModContent.Request<Texture2D>("AbsolutionCore/Content/NPCs/GuardianBoss/GuardianBoss_Head_Boss", (AssetRequestMode)2).Value, bubble))
+                            .Add(new Dialogue(NPC, Language.GetTextValue("Mods.AbsolutionCore.GuardianIntroChat.Chat6"), new Color(128, 0, 255), new Color(67, 0, 135), voice, 2, 100, 30, true,
+                            ModContent.Request<Texture2D>("AbsolutionCore/Content/NPCs/GuardianBoss/GuardianBoss_Head_Boss", (AssetRequestMode)2).Value, bubble, endID: 6));
+                        TextBubbleUI.Visible = true;
+                        TextBubbleUI.Add(chain);
+
+                        chain.OnEndTrigger += Chain_OnEndTrigger;
+                    }
+                    break;
                 case 1:
                     player.RedemptionScreen().ScreenFocusPosition = base.NPC.Center;
                     player.RedemptionScreen().lockScreen = true;
@@ -77,6 +116,8 @@ namespace AbsolutionCore.Content.NPCs
                     }
                     break;
                 default:
+                    player.RedemptionScreen().lockScreen = false;
+                    player.RedemptionScreen().cutscene = false;
                     int npc = NPC.NewNPC(NPC.GetSource_FromThis(), (int)NPC.Center.X, (int)NPC.Center.Y, ModContent.NPCType<Guardian>());
                     Main.npc[npc].GivenName = AbsolutionWorld.GuardianName;
                     if (Main.netMode == NetmodeID.Server) NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, npc);
@@ -95,7 +136,6 @@ namespace AbsolutionCore.Content.NPCs
             switch (id)
             {
                 case 1:
-                    NPC.ai[1] = 0;
                     Main.NewText(Language.GetTextValue("Mods.AbsolutionCore.GuardianKnowledgeChat.TimberExplanation"), new Color(190, 255, 158));
                     NPC.ai[1] = -127;
                     break;
@@ -104,7 +144,18 @@ namespace AbsolutionCore.Content.NPCs
                     EmoteBubble.NewBubble(3, new WorldUIAnchor(NPC), 50);
                     break;
                 case 3:
+                    NPC.ai[2] = 0;
+                    break;
+                case 4:
+                    frame = 3;
+                    NPC.ai[2] = 1;
+                    break;
+                case 5:
                     frame = 0;
+                    NPC.GivenName = AbsolutionWorld.GuardianName;
+                    break;
+                case 6:
+                    NPC.ai[1] = -127;
                     break;
                 default:
                     break;

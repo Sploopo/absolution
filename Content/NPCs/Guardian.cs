@@ -14,11 +14,7 @@ using Fargowiltas;
 using AbsolutionCore.Content.NPCs.GuardianBoss;
 using AbsolutionCore.Common.Systems;
 using Terraria.DataStructures;
-using Terraria.Audio;
-using Redemption;
-using Redemption.BaseExtension;
 using Redemption.Globals;
-using Redemption.UI;
 
 namespace AbsolutionCore.Content.NPCs
 {
@@ -44,7 +40,6 @@ namespace AbsolutionCore.Content.NPCs
             NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 
             NPC.Happiness
-                .SetNPCAffection(ModLoader.GetMod("CalamityMod").Find<ModNPC>("DILF").Type, AffectionLevel.Love)
                 .SetNPCAffection(ModLoader.GetMod("CalamityMod").Find<ModNPC>("WITCH").Type, AffectionLevel.Like)
                 .SetNPCAffection(ModLoader.GetMod("Fargowiltas").Find<ModNPC>("LumberJack").Type, AffectionLevel.Hate);
         }
@@ -82,7 +77,7 @@ namespace AbsolutionCore.Content.NPCs
         {
             bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
             {
-                BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Times.NightTime,
+                BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
                 new FlavorTextBestiaryInfoElement("While he doesn't look very old, his knowledge of history tells a different story. His age may be uncertain, but he's sure to help you thrive in this world.")
             });
         }
@@ -101,6 +96,7 @@ namespace AbsolutionCore.Content.NPCs
                 "Omname",
                 "Walt",
                 "Smirl",
+                "John",
                 "Greg",
                 "Drunn",
                 "Notb",
@@ -136,20 +132,40 @@ namespace AbsolutionCore.Content.NPCs
         }
         public override string GetChat()
         {
-            if (!AbsolutionWorld.GuardianGivenThanks)
+            List<string> funnyWords = new List<string>()
             {
-                AbsolutionWorld.GuardianGivenThanks = true;
-                return "Hello, and thank you for freeing me from that crate. " +
-                    $"You must be the Terrarian. My name is {AbsolutionWorld.GuardianName}, and I am here to guide you through this incredibly convoluted world created by you mixing multiple content mods. " +
-                    "Just ask me for help if you need it.";
-            }
-
+                "kazoos are",
+                "whips are",
+                "consumable boss summons are",
+                "cryonic ore is",
+                "the Daedalus Stormbow is",
+                "mods are",
+                "perpetual war is",
+                "bees are",
+                "elections are",
+                "boiling alive in lava is",
+                "magic mirrors are",
+                "Valentine's Day is",
+                "vandalism is",
+                "cardiac arrest is",
+                "thought experiments are",
+                "lore is",
+                "the Jungle is",
+                "secret seeds are",
+            };
+            string comedy = Main.rand.Next(funnyWords);
             List<string> chat = new List<string>
             {
-                "I remember a time when this world was unified. Granted, it was under a brutal dictator, so not the best of times.",
-                "A jungle tyrant, a light manipulator, and a harbinger of the end of reality. It is probably bad that all of them are so powerful.",
-                "I have been in this world for many, many years... since what your kind call 2011.",
+                "I have been in this world for many, many years... since what you might call \"2011\".",
                 "Do you know where I could find a space kazoo?",
+                "A lot of people are saying that they get their information today from somewhere known as \"the Internet\". Forgive me for asking, but do you know where that is?",
+                $"It has been a while since I effectively kept up with the times. You seem young, do you know if {comedy} still popular?",
+                $"It has been a while since I effectively kept up with the times. You seem young, do you know if {comedy} still popular?", // added twice because FUCK unifiedrandom
+                "I do not consider myself too happy with the gods, but attempting to kill them all just seems absurd.",
+                "Have you seen those chickens? They used to be part of one, united kingdom. That all fell apart when the king disappeared.",
+                "Did you know? If you cover yourself in thorium, you may undergo radioactive decay!",
+                "In the beginning, four beings from beyond this realm created the gods. Some say their incarnations roam our towns or show up as pets to this day.",
+                "What exactly is an \"early game desert boss\"?",
             };
             if(!Main.dayTime)
             {
@@ -161,7 +177,7 @@ namespace AbsolutionCore.Content.NPCs
             }
             if (Main.hardMode)
             {
-                chat.Add("I once got in the way of the Jungle Tyrant while he was still in his prime. I will let my hand show you why that is a bad idea.");
+                chat.Add("There was a time where I had enough hubris to challenge the Godseeker to a duel. I will let my hand show you why that is a bad idea.");
                 chat.Add("I have been told that I \"look like someone's cringe edgy OC.\" Can you tell me what that means?");
             }
             if (Main.bloodMoon)

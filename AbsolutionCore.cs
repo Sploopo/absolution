@@ -1,4 +1,6 @@
 using System;
+using System.Reflection;
+using System.Runtime;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -7,16 +9,18 @@ using AbsolutionCore.Content;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using CalamityMod;
+using Redemption;
 using AbsolutionCore.Common.Systems;
 using AbsolutionCore.Content.Items;
-using AbsolutionCore.Content.NPCs.GuardianBoss;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
+using MonoMod.RuntimeDetour.HookGen;
 
 namespace AbsolutionCore
 {
 	public class AbsolutionCore : Mod
 	{
+        private static MethodInfo CragBullshit = null;
         public override void PostSetupContent()
         {
             
@@ -25,20 +29,28 @@ namespace AbsolutionCore
         public override void Load()
         {
             IL.CalamityMod.NPCs.CalamityGlobalNPC.PreAI += DestroyCalamityVanillaBossChanges;
+            IL.CalamityMod.World.DraedonStructures.PlaceHellLab += BenShapiroLab;
             if (!AbsolutionConfig.Instance.UnboundMode)
             {
                 IL.CalamityMod.UI.ModeIndicator.ModeIndicatorUI.GetLockStatus += LockCalamityDifficulties;
                 IL.CalamityMod.World.UndergroundShrines.SpecialChest += BreakTerminus;
                 IL.CalamityMod.Tiles.Astral.AstralBeacon.RightClick += NoDeusPreCultist;
             }
+
+            Type VIDEOJAMES = null;
+            Assembly cal = ModLoader.GetMod("CalamityMod").GetType().Assembly;
+            foreach(Type t in cal.GetTypes()) { if(t.Name == "BrimstoneCrag") VIDEOJAMES = t; }
+            if (VIDEOJAMES != null) CragBullshit = VIDEOJAMES.GetMethod("GenCrags", BindingFlags.Static | BindingFlags.NonPublic);
+            if(CragBullshit != null) SuperCraggingHouse += LiberalsBeLikeBrimstoneCrag;
         }
-        
+
         // il editing
         private static void DestroyCalamityVanillaBossChanges(ILContext il)
         {
             ILCursor mario = new ILCursor(il);
             if (ModLoader.TryGetMod("InfernumMode", out Mod dummy)) return;
-            if (mario.TryGotoNext(MoveType.After, x => x.MatchLdsfld("CalamityMod.World.CalamityWorld", "revenge")))
+            mario.TryGotoNext(MoveType.After, x => x.MatchLdsfld("CalamityMod.World.CalamityWorld", "revenge"));
+            if (mario.TryGotoNext(MoveType.After, x => x.MatchLdsfld("CalamityMod.World.CalamityWorld", "revenge"))) // do this twice to get to the second one
             {
                 mario.Emit(OpCodes.Pop);
                 mario.Emit(OpCodes.Ldc_I4_0);
@@ -72,14 +84,42 @@ namespace AbsolutionCore
         private static void NoDeusPreCultist(ILContext il)
         {
             ILCursor mario = new ILCursor(il);
-            if (mario.TryGotoNext(MoveType.After, x => x.MatchStloc(2)))
+            if (mario.TryGotoNext(MoveType.After, x => x.MatchStloc(0)))
             {
                 mario.EmitDelegate(FunnyCultist);
             }
         }
-        private static void FunnyCultist() // because of emitdelegate shenanigans
+        private static void LiberalsBeLikeBrimstoneCrag(ILContext il)
         {
-            if(!NPC.downedAncientCultist) return;
+            ILCursor mario = new ILCursor(il);
+            if (mario.TryGotoNext(MoveType.After, x => x.MatchLdsfld("Terraria.WorldGen", "dungeonX")))
+            {
+                mario.Emit(OpCodes.Pop);
+                mario.Emit(OpCodes.Ldc_I4_7);
+            }
         }
+        private static void BenShapiroLab(ILContext il)
+        {
+            ILCursor mario = new ILCursor(il);
+            if (mario.TryGotoNext(MoveType.After, x => x.MatchLdsfld("Terraria.Main", "dungeonX")))
+            {
+                mario.Emit(OpCodes.Pop);
+                mario.Emit(OpCodes.Ldc_I4_0);
+            }
+        }
+        
+        private static event ILContext.Manipulator SuperCraggingHouse
+        {
+            add
+            {
+                HookEndpointManager.Modify(CragBullshit, value);
+            }
+            remove
+            {
+                HookEndpointManager.Unmodify(CragBullshit, value);
+            }
+        }
+        private static void FunnyCultist() { if (!NPC.downedAncientCultist) return; }
+        private static void Return() { return; }
     }
 }

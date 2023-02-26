@@ -20,13 +20,6 @@ namespace AbsolutionCore.Common.Globals
     {
         public override bool InstancePerEntity => true;
         int guardianType = ModContent.NPCType<Guardian>();
-        public override void SetStaticDefaults()
-        {
-            NPCHappiness.Get(ModLoader.GetMod("CalamityMod").Find<ModNPC>("WITCH").Type).SetNPCAffection(guardianType, AffectionLevel.Like);
-            NPCHappiness.Get(ModLoader.GetMod("Fargowiltas").Find<ModNPC>("Mutant").Type).SetNPCAffection(guardianType, AffectionLevel.Like);
-            NPCHappiness.Get(ModLoader.GetMod("Fargowiltas").Find<ModNPC>("Abominationn").Type).SetNPCAffection(guardianType, AffectionLevel.Like);
-            NPCHappiness.Get(ModLoader.GetMod("Fargowiltas").Find<ModNPC>("Deviantt").Type).SetNPCAffection(guardianType, AffectionLevel.Like);
-        }
         public override void SetDefaults(NPC npc)
         {
             base.SetDefaults(npc);

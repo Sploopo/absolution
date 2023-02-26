@@ -76,6 +76,7 @@ namespace AbsolutionCore.Content.NPCs.GuardianBoss
 
             Music = MusicLoader.GetMusicSlot(Mod, "Assets/Music/depot");
             SceneEffectPriority = SceneEffectPriority.BossHigh;
+            NPC.ai[0] = -3;
         }
         public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
         {
@@ -126,7 +127,7 @@ namespace AbsolutionCore.Content.NPCs.GuardianBoss
             NPC.TargetClosest();
 
             Player player = Main.player[NPC.target];
-            if((!player.active || player.dead || Vector2.Distance(NPC.Center, player.Center) > 2400f) && NPC.ai[0] != -3) {
+            if((!player.active || player.dead || Vector2.Distance(NPC.Center, player.Center) > 3000f) && NPC.ai[0] != -3) {
                 NPC.TargetClosest(false);
                 if (NPC.timeLeft > 30) NPC.timeLeft = 30;
                 NPC.velocity.Y += 0.3f;

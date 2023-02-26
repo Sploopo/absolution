@@ -23,8 +23,14 @@
     <Reference Include="Fargowiltas">
       <HintPath>lib\Fargowiltas.dll</HintPath>
     </Reference>
+    <Reference Include="MMHOOK_Redemption">
+      <HintPath>lib\MMHOOK_Redemption.dll</HintPath>
+    </Reference>
+    <Reference Include="MMHOOK_ThoriumMod">
+      <HintPath>lib\MMHOOK_ThoriumMod.dll</HintPath>
+    </Reference>
     <Reference Include="Redemption">
-      <HintPath>..\..\ModReader\Redemption\Redemption.dll</HintPath>
+      <HintPath>lib\Redemption.dll</HintPath>
     </Reference>
     <Reference Include="ThoriumMod">
       <HintPath>D:\D\SteamLibrary\steamapps\workshop\content\1281930\2909886416\2022.9\ThoriumMod\ThoriumMod.dll</HintPath>

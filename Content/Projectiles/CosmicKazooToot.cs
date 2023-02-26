@@ -184,10 +184,10 @@ namespace AbsolutionCore.Content.Projectiles
 				Vector2 val = base.Projectile.velocity.SafeNormalize(Vector2.UnitY) * 8f;
 				int num10 = ((!((this.Timer * num3 + (float)Math.PI / 2f) % ((float)Math.PI * 2f) >= (float)Math.PI)) ? 1 : (-1));
 				Vector2 val2 = (num8 + (float)Math.PI / 2f * (float)num10).ToRotationVector2() * num7;
-				Dust dust = Dust.NewDustPerfect(base.Projectile.Center + val, 90, val2, newColor: new Color(147, 73, 217));
+				Dust dust = Dust.NewDustPerfect(base.Projectile.Center + val, ModContent.DustType<CalamityMod.Dusts.CosmiliteBarDust>(), val2);
 				dust.scale = 1f;
 				dust.noGravity = true;
-				Dust dust2 = Dust.NewDustPerfect(base.Projectile.Center - val, 90, -val2, newColor: new Color(147, 73, 217));
+				Dust dust2 = Dust.NewDustPerfect(base.Projectile.Center - val, ModContent.DustType<CalamityMod.Dusts.CosmiliteBarDust>(), -val2);
 				dust2.scale = 1f;
 				dust2.noGravity = true;
 			}
