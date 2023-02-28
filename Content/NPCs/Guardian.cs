@@ -187,6 +187,7 @@ namespace AbsolutionCore.Content.NPCs
             }
             if (Terraria.GameContent.Events.BirthdayParty.PartyIsUp) chat.Add("I admit, I am not the first person to jump at the idea of these festivities, but I try to enjoy them before the other attendees are gone.");
             if (AbsolutionConfig.Instance.UnboundMode) chat.Add("What? You want to fight me? ... not with your current config options.");
+            if (NPC.GivenName == "Greg") chat.Add("People are always asking me if I am \"gregging\". Do you have any idea what gregging is?");
             if (NPC.GivenName == "Updig") chat.Add("Please, do not ask me what \"updig\" is. I cannot remember the last time I went two weeks without hearing that joke.");
             return Main.rand.Next(chat);
         }

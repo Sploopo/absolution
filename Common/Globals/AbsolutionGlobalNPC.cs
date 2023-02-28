@@ -9,6 +9,7 @@ using Terraria.ModLoader;
 using AbsolutionCore.Content.Tiles;
 using Terraria.GameContent.Personalities;
 using CalamityMod.World;
+using CalamityMod.NPCs;
 using FargowiltasSouls;
 using AbsolutionCore.Content.NPCs;
 using AbsolutionCore.Common.Systems;
@@ -19,19 +20,9 @@ namespace AbsolutionCore.Common.Globals
     public class AbsolutionGlobalNPC : GlobalNPC
     {
         public override bool InstancePerEntity => true;
-        int guardianType = ModContent.NPCType<Guardian>();
         public override void SetDefaults(NPC npc)
         {
             base.SetDefaults(npc);
-        }
-
-        public override void GetChat(NPC npc, ref string chat)
-        {
-            int g = NPC.FindFirstNPC(guardianType);
-            if (npc.type == ModLoader.GetMod("CalamityMod").Find<ModNPC>("WITCH").Type)
-            {
-                if (Main.rand.NextBool(16) && NPC.AnyNPCs(ModContent.NPCType<Guardian>())) chat = Main.npc[g].GivenName + " has not changed a bit even after all these years... so those rumors about immortality were true.";
-            }
         }
 
         public override void OnKill(NPC npc)
@@ -56,26 +47,10 @@ namespace AbsolutionCore.Common.Globals
             switch(npc.type)
             {
                 case NPCID.VoodooDemon:
-                    if (!FargoSoulsWorld.downedDevi && !AbsolutionConfig.Instance.UnboundMode) npc.life = 0;
+                    if (!FargoSoulsWorld.downedDevi && !AbsolutionConfig.Instance.UnboundMode) npc.active = false;
                     break;
                 default:
                     break;
-            }
-            if(npc.type == ModLoader.GetMod("CalamityMod").Find<ModNPC>("OldDuke").Type || npc.type == ModLoader.GetMod("CalamityMod").Find<ModNPC>("StormWeaverHead").Type) // perma rain during old duke/storm weaver
-            {
-                if (!Main.raining || Main.maxRaining < 0.7f)
-                {
-                    CalamityMod.CalamityUtils.StartRain(false, true);
-                    Main.cloudBGActive = 1f;
-                    Main.numCloudsTemp = 160;
-                    Main.numClouds = Main.numCloudsTemp;
-                    if(npc.type == ModLoader.GetMod("CalamityMod").Find<ModNPC>("StormWeaverHead").Type) // ALSO thunderstorm during storm weaver
-                    {
-                        Main.windSpeedCurrent = 1.04f;
-                        Main.windSpeedTarget = Main.windSpeedCurrent;
-                    }
-                    Main.maxRaining = 0.96f;
-                }
             }
             // kill true eyes during providence
             Toggle t = Main.player[Main.myPlayer].GetModPlayer<FargoSoulsPlayer>().Toggler.Toggles["MasoTrueEye"];

@@ -33,7 +33,7 @@
       <HintPath>lib\Redemption.dll</HintPath>
     </Reference>
     <Reference Include="ThoriumMod">
-      <HintPath>D:\D\SteamLibrary\steamapps\workshop\content\1281930\2909886416\2022.9\ThoriumMod\ThoriumMod.dll</HintPath>
+      <HintPath>lib\ThoriumMod.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>
